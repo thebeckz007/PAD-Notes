@@ -24,6 +24,11 @@
 		70A28F4A2B343EF3003474F5 /* SignUpBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F432B343D30003474F5 /* SignUpBuilder.swift */; };
 		70A28F4B2B343EF3003474F5 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F3F2B343D30003474F5 /* SignUpModel.swift */; };
 		70A28F502B345647003474F5 /* SwiftUIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F4F2B345647003474F5 /* SwiftUIView+Helpers.swift */; };
+		70A28F5C2B34579C003474F5 /* NotesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F552B34579C003474F5 /* NotesListViewModel.swift */; };
+		70A28F5D2B34579C003474F5 /* NotesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F572B34579C003474F5 /* NotesListModel.swift */; };
+		70A28F5E2B34579C003474F5 /* NotesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F592B34579C003474F5 /* NotesListView.swift */; };
+		70A28F5F2B34579C003474F5 /* NotesListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F5B2B34579C003474F5 /* NotesListBuilder.swift */; };
+		70A28F622B34589D003474F5 /* DatabaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F612B34589D003474F5 /* DatabaseModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,11 @@
 		70A28F412B343D30003474F5 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		70A28F432B343D30003474F5 /* SignUpBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpBuilder.swift; sourceTree = "<group>"; };
 		70A28F4F2B345647003474F5 /* SwiftUIView+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftUIView+Helpers.swift"; sourceTree = "<group>"; };
+		70A28F552B34579C003474F5 /* NotesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListViewModel.swift; sourceTree = "<group>"; };
+		70A28F572B34579C003474F5 /* NotesListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListModel.swift; sourceTree = "<group>"; };
+		70A28F592B34579C003474F5 /* NotesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListView.swift; sourceTree = "<group>"; };
+		70A28F5B2B34579C003474F5 /* NotesListBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListBuilder.swift; sourceTree = "<group>"; };
+		70A28F612B34589D003474F5 /* DatabaseModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +128,6 @@
 				70A28F1D2B33E330003474F5 /* Resources */,
 				70A28F1C2B33E329003474F5 /* Libraries */,
 				70A28F1B2B33E320003474F5 /* Components */,
-				70A28EF12B33E2C2003474F5 /* PAD_NotesApp.swift */,
 				70A28EF72B33E2C3003474F5 /* Preview Content */,
 			);
 			path = "PAD Notes";
@@ -152,6 +161,7 @@
 		70A28F1B2B33E320003474F5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				70A28F602B345802003474F5 /* DatabaseModule */,
 				70A28F4E2B345647003474F5 /* UIComponents */,
 				70A28F312B33E56B003474F5 /* Authentication */,
 			);
@@ -176,9 +186,11 @@
 		70A28F1E2B33E336003474F5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				70A28F2B2B33E48F003474F5 /* MVVMBaseProtocol.swift */,
+				70A28F532B34579C003474F5 /* NotesList */,
 				70A28F3B2B343D30003474F5 /* SignUp */,
 				70A28F222B33E48F003474F5 /* SignIn */,
+				70A28F2B2B33E48F003474F5 /* MVVMBaseProtocol.swift */,
+				70A28EF12B33E2C2003474F5 /* PAD_NotesApp.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -283,6 +295,57 @@
 				70A28F4F2B345647003474F5 /* SwiftUIView+Helpers.swift */,
 			);
 			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		70A28F532B34579C003474F5 /* NotesList */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F542B34579C003474F5 /* ViewModel */,
+				70A28F562B34579C003474F5 /* Model */,
+				70A28F582B34579C003474F5 /* View */,
+				70A28F5A2B34579C003474F5 /* Builder */,
+			);
+			path = NotesList;
+			sourceTree = "<group>";
+		};
+		70A28F542B34579C003474F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F552B34579C003474F5 /* NotesListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		70A28F562B34579C003474F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F572B34579C003474F5 /* NotesListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		70A28F582B34579C003474F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F592B34579C003474F5 /* NotesListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70A28F5A2B34579C003474F5 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F5B2B34579C003474F5 /* NotesListBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		70A28F602B345802003474F5 /* DatabaseModule */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F612B34589D003474F5 /* DatabaseModule.swift */,
+			);
+			path = DatabaseModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,12 +483,17 @@
 				70A28F382B33F641003474F5 /* SignInViewModel.swift in Sources */,
 				70A28F482B343EF3003474F5 /* SignUpViewModel.swift in Sources */,
 				70A28F502B345647003474F5 /* SwiftUIView+Helpers.swift in Sources */,
+				70A28F622B34589D003474F5 /* DatabaseModule.swift in Sources */,
 				70A28EF22B33E2C2003474F5 /* PAD_NotesApp.swift in Sources */,
 				70A28F362B33F641003474F5 /* SignInBuilder.swift in Sources */,
+				70A28F5D2B34579C003474F5 /* NotesListModel.swift in Sources */,
 				70A28F352B33F641003474F5 /* SignInModel.swift in Sources */,
 				70A28F302B33E48F003474F5 /* MVVMBaseProtocol.swift in Sources */,
 				70A28F4B2B343EF3003474F5 /* SignUpModel.swift in Sources */,
+				70A28F5C2B34579C003474F5 /* NotesListViewModel.swift in Sources */,
 				70A28F492B343EF3003474F5 /* SignUpView.swift in Sources */,
+				70A28F5F2B34579C003474F5 /* NotesListBuilder.swift in Sources */,
+				70A28F5E2B34579C003474F5 /* NotesListView.swift in Sources */,
 				70A28F342B33F63B003474F5 /* AuthenticationModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
