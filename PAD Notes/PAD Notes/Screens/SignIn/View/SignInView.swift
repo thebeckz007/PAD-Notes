@@ -35,65 +35,17 @@ struct SignInView : View, SignInViewprotocol {
         VStack {
             Spacer()
             
-            Image("Notes_logo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 150)
-            Text("PAD Notes")
-                .font(.title2)
-                .bold()
-                .padding(.bottom, 20)
-            Text("Log In")
-                .font(.title)
-                .bold()
-                .padding(.bottom, 40)
+            AppLogoImage()
+            AppNameText()
 
             VStack {
-                VStack (alignment: .leading) {
-                    Text("Email")
-                        .font(.callout)
-                    TextField("Enter email here...", text: $viewmodel.email)
-                        .autocorrectionDisabled()
-                        .textInputAutocapitalization(.never)
-                        .keyboardType(.emailAddress)
-                        .padding()
-                        .background(Color(UIColor.secondarySystemFill))
-                        .cornerRadius(10)
-                }
-
-                VStack (alignment: .leading) {
-                    Text("Password")
-                        .font(.callout)
-                    SecureField("Enter password here...", text: $viewmodel.password)
-                        .autocorrectionDisabled()
-                        .textInputAutocapitalization(.never)
-                        .keyboardType(.default)
-                        .padding()
-                        .background(Color(UIColor.secondarySystemFill))
-                        .cornerRadius(10)
-                }
-                .padding(.top)
-                
+                EmailTextField()
+                PasswordTextField()
             }.padding(.vertical, 30)
             
-            Button {
-                viewmodel.signin()
-            } label: {
-                ZStack {
-                    Text("Log In")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
-                    if viewmodel.authStatus == .InProgess {
-                        ProgressView()
-                    }
-                }
-            }
-            .disabled(viewmodel.email.isEmpty || viewmodel.password.isEmpty)
-
+            SignInButton()
+            SignUpButton()
+            
             Spacer()
         }
         .padding(.horizontal, 30)
@@ -103,6 +55,87 @@ struct SignInView : View, SignInViewprotocol {
         }, message: {
             Text(viewmodel.errMessage)
         })
+        
+        if viewmodel.authStatus == .InProgess {
+            viewLoading()
+        }
+    }
+    
+    private func AppLogoImage() -> some View {
+        Image("Notes_logo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 150)
+    }
+    
+    private func AppNameText() -> some View {
+        Text("PAD Notes")
+            .font(.title)
+            .bold()
+            .padding(.bottom, 20)
+    }
+    
+    private func EmailTextField() -> some View {
+        VStack (alignment: .leading) {
+            Text("Email")
+                .font(.callout)
+            TextField("Enter email here...", text: $viewmodel.email)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .keyboardType(.emailAddress)
+                .padding()
+                .background(Color(UIColor.secondarySystemFill))
+                .cornerRadius(10)
+        }
+    }
+    
+    private func PasswordTextField() -> some View {
+        VStack (alignment: .leading) {
+            Text("Password")
+                .font(.callout)
+            SecureField("Enter password here...", text: $viewmodel.password)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .keyboardType(.default)
+                .padding()
+                .background(Color(UIColor.secondarySystemFill))
+                .cornerRadius(10)
+        }
+        .padding(.top)
+    }
+    
+    private func SignInButton() -> some View {
+        Button {
+            viewmodel.signin()
+        } label: {
+            ZStack {
+                Text("Log In")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.accentColor)
+                    .cornerRadius(10)
+                if viewmodel.authStatus == .InProgess {
+                    ProgressView()
+                }
+            }
+        }
+        .disabled(viewmodel.email.isEmpty || viewmodel.password.isEmpty)
+    }
+    
+    private func SignUpButton() -> some View {
+        Button {
+            viewmodel.isShownRegisterAccountScreen = true
+        } label: {
+            Text("Register Account")
+                .font(.headline)
+                .foregroundColor(Color.accentColor)
+                .padding()
+        }
+        .fullScreenCover(isPresented: $viewmodel.isShownRegisterAccountScreen) {
+            viewmodel.navigateToSignUpScreen()
+        }
     }
 }
 

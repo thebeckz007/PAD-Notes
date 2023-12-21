@@ -12,7 +12,8 @@ import Foundation
 /// protocol SignInViewModelprotocol
 protocol SignInViewModelprotocol: BaseViewModelProtocol {
     func signin()
-    func authenticateWithSocial()
+    func authenticateWithSocial(_ type: AuthenticationSupportingSocialType)
+    func navigateToSignUpScreen() -> SignUpView
 }
 
 enum AuthenStatus: UInt {
@@ -28,11 +29,11 @@ class SignInViewModel: ObservableObject, SignInViewModelprotocol {
     
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var authSocialType: AuthenticationSupportingSocialType?
     
     @Published var authStatus: AuthenStatus?
     @Published var authUser: AuthenticationUser?
     
+    @Published var isShownRegisterAccountScreen: Bool = false
     @Published var errMessage: String = ""
     @Published var isShownError: Bool = false
     
@@ -51,14 +52,19 @@ class SignInViewModel: ObservableObject, SignInViewModelprotocol {
     
     
     //
-    func authenticateWithSocial() {
+    func authenticateWithSocial(_ type: AuthenticationSupportingSocialType) {
         self.resetAuthentication()
         
-        signinModel.AuthenticateWithSocial(authSocialType!) { result in
+        signinModel.AuthenticateWithSocial(type) { result in
             self.handleAuthenticationResult(result: result)
         }
     }
     
+    func navigateToSignUpScreen() -> SignUpView {
+        SignUpBuilder.setupSignup()
+    }
+    
+    // MARK: private functions
     fileprivate func handleAuthenticationResult(result: Result<AuthenticationUser?, Error>) {
         DispatchQueue.main.async {
             self.authStatus = .Finished

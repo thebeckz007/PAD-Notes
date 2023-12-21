@@ -23,6 +23,7 @@
 		70A28F492B343EF3003474F5 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F412B343D30003474F5 /* SignUpView.swift */; };
 		70A28F4A2B343EF3003474F5 /* SignUpBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F432B343D30003474F5 /* SignUpBuilder.swift */; };
 		70A28F4B2B343EF3003474F5 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F3F2B343D30003474F5 /* SignUpModel.swift */; };
+		70A28F502B345647003474F5 /* SwiftUIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F4F2B345647003474F5 /* SwiftUIView+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		70A28F3F2B343D30003474F5 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		70A28F412B343D30003474F5 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		70A28F432B343D30003474F5 /* SignUpBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpBuilder.swift; sourceTree = "<group>"; };
+		70A28F4F2B345647003474F5 /* SwiftUIView+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftUIView+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		70A28F1B2B33E320003474F5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				70A28F4E2B345647003474F5 /* UIComponents */,
 				70A28F312B33E56B003474F5 /* Authentication */,
 			);
 			path = Components;
@@ -272,6 +275,14 @@
 				70A28F432B343D30003474F5 /* SignUpBuilder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		70A28F4E2B345647003474F5 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F4F2B345647003474F5 /* SwiftUIView+Helpers.swift */,
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +419,7 @@
 				70A28F4A2B343EF3003474F5 /* SignUpBuilder.swift in Sources */,
 				70A28F382B33F641003474F5 /* SignInViewModel.swift in Sources */,
 				70A28F482B343EF3003474F5 /* SignUpViewModel.swift in Sources */,
+				70A28F502B345647003474F5 /* SwiftUIView+Helpers.swift in Sources */,
 				70A28EF22B33E2C2003474F5 /* PAD_NotesApp.swift in Sources */,
 				70A28F362B33F641003474F5 /* SignInBuilder.swift in Sources */,
 				70A28F352B33F641003474F5 /* SignInModel.swift in Sources */,

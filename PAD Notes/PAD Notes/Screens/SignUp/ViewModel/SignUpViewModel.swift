@@ -28,6 +28,7 @@ class SignUpViewModel: ObservableObject, SignUpViewModelprotocol {
     
     @Published var errMessage: String = ""
     @Published var isShownError: Bool = false
+    @Published var isSignupSuccess: Bool = false
     
     init(model: SignUpModelprotocol) {
         self.model = model
@@ -47,6 +48,7 @@ class SignUpViewModel: ObservableObject, SignUpViewModelprotocol {
             switch result {
             case .success(let authUser):
                 self.authUser = authUser!
+                self.isSignupSuccess = true
             case .failure(let error):
                 self.errMessage = error.localizedDescription
                 self.isShownError = true
@@ -58,5 +60,6 @@ class SignUpViewModel: ObservableObject, SignUpViewModelprotocol {
         self.authStatus = .NotStart
         self.errMessage = ""
         self.isShownError = false
+        self.isSignupSuccess = false
     }
 }

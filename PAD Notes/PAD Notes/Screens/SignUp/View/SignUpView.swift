@@ -27,82 +27,122 @@ protocol SignUpViewprotocol: BaseViewProtocol {
 struct SignUpView : View, SignUpViewprotocol {
     @ObservedObject private var viewmodel: SignUpViewModel
     
+    @Environment(\.dismiss) var dismiss
+    
     init(viewmodel: SignUpViewModel) {
         self.viewmodel = viewmodel
     }
     
     var body: some View {
-        VStack {
-            Spacer()
+        ZStack(alignment: .topLeading) {
+            DismissViewButton()
             
-            Image("Notes_logo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 150)
-            Text("PAD Notes")
-                .font(.title2)
-                .bold()
-                .padding(.bottom, 20)
-            Text("Register")
-                .font(.title)
-                .bold()
-                .padding(.bottom, 40)
-
             VStack {
-                VStack (alignment: .leading) {
-                    Text("Email")
-                        .font(.callout)
-                    TextField("Enter email here...", text: $viewmodel.email)
-                        .autocorrectionDisabled()
-                        .textInputAutocapitalization(.never)
-                        .keyboardType(.emailAddress)
-                        .padding()
-                        .background(Color(UIColor.secondarySystemFill))
-                        .cornerRadius(10)
-                }
-
-                VStack (alignment: .leading) {
-                    Text("Password")
-                        .font(.callout)
-                    SecureField("Enter password here...", text: $viewmodel.password)
-                        .autocorrectionDisabled()
-                        .textInputAutocapitalization(.never)
-                        .keyboardType(.default)
-                        .padding()
-                        .background(Color(UIColor.secondarySystemFill))
-                        .cornerRadius(10)
-                }
-                .padding(.top)
+                Spacer()
                 
-            }.padding(.vertical, 30)
-            
-            Button {
-                viewmodel.signUp()
-            } label: {
-                ZStack {
-                    Text("Register")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
-                    if viewmodel.authStatus == .InProgess {
-                        ProgressView()
-                    }
+                AppLogoImage()
+                AppNameText()
+                
+                VStack {
+                    EmailTextField()
+                    PasswordTextField()
+                }.padding(.vertical, 30)
+                
+                SignUpButton()
+                
+                Spacer()
+            }
+            .padding(.horizontal, 30)
+            .alert("Register Failed", isPresented: $viewmodel.isShownError, actions: {
+                Button("OK", role: .none) {
+                }
+            }, message: {
+                Text(viewmodel.errMessage)
+            })
+            //
+            .alert("Register Success!", isPresented: $viewmodel.isSignupSuccess, actions: {
+                Button("OK", role: .none) {
+                    dismiss()
+                }
+            }, message: {
+                Text("Hooray!!!...")
+            })
+        }
+        
+        if viewmodel.authStatus == .InProgess {
+            viewLoading()
+        }
+    }
+    
+    private func AppLogoImage() -> some View {
+        Image("Notes_logo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 150)
+    }
+    
+    private func AppNameText() -> some View {
+        Text("PAD Notes")
+            .font(.title)
+            .bold()
+            .padding(.bottom, 20)
+    }
+    
+    private func EmailTextField() -> some View {
+        VStack (alignment: .leading) {
+            Text("Email")
+                .font(.callout)
+            TextField("Enter email here...", text: $viewmodel.email)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .keyboardType(.emailAddress)
+                .padding()
+                .background(Color(UIColor.secondarySystemFill))
+                .cornerRadius(10)
+        }
+    }
+    
+    private func PasswordTextField() -> some View {
+        VStack (alignment: .leading) {
+            Text("Password")
+                .font(.callout)
+            SecureField("Enter password here...", text: $viewmodel.password)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .keyboardType(.default)
+                .padding()
+                .background(Color(UIColor.secondarySystemFill))
+                .cornerRadius(10)
+        }
+        .padding(.top)
+    }
+    
+    private func SignUpButton() -> some View {
+        Button {
+            viewmodel.signUp()
+        } label: {
+            ZStack {
+                Text("Register")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.accentColor)
+                    .cornerRadius(10)
+                if viewmodel.authStatus == .InProgess {
+                    ProgressView()
                 }
             }
-            .disabled(viewmodel.email.isEmpty || viewmodel.password.isEmpty)
-
-            Spacer()
         }
-        .padding(.horizontal, 30)
-        .alert("Login Failed", isPresented: $viewmodel.isShownError, actions: {
-            Button("OK", role: .none) {
-            }
-        }, message: {
-            Text(viewmodel.errMessage)
-        })
+        .disabled(viewmodel.email.isEmpty || viewmodel.password.isEmpty)
+    }
+    
+    private func DismissViewButton() -> some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "xmark.circle").tint(.blue)
+        }.padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 0))
     }
 }
 

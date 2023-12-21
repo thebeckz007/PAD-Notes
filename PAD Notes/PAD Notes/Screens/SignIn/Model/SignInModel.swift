@@ -29,6 +29,6 @@ struct SignInModel: SignInModelprotocol {
     }
     
     func AuthenticateWithSocial(_ type: AuthenticationSupportingSocialType, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion) {
-        self.AuthenticateWithSocial(type, completion: completion)
+        self.authModule.AuthenticateWithSocial(type, completion: completion)
     }
 }
