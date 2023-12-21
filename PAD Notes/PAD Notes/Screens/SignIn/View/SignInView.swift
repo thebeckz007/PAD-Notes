@@ -27,6 +27,8 @@ protocol SignInViewprotocol: BaseViewProtocol {
 struct SignInView : View, SignInViewprotocol {
     @ObservedObject private var viewmodel: SignInViewModel
     
+    @Environment(\.dismiss) var dismiss
+    
     init(viewmodel: SignInViewModel) {
         self.viewmodel = viewmodel
     }
@@ -54,6 +56,13 @@ struct SignInView : View, SignInViewprotocol {
             }
         }, message: {
             Text(viewmodel.errMessage)
+        })
+        .alert("Login Success!", isPresented: $viewmodel.isSignInSuccess, actions: {
+            Button("OK", role: .none) {
+                dismiss()
+            }
+        }, message: {
+            Text("Hooray!!!...")
         })
         
         if viewmodel.authStatus == .InProgess {

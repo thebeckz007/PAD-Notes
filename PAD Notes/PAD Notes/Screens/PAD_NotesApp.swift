@@ -11,7 +11,7 @@ import SwiftUI
 struct PAD_NotesApp: App {
     var body: some Scene {
         WindowGroup {
-            SignInBuilder.setupSignin()
+            HomePageBuilder.setupHomePage()
         }
     }
 }

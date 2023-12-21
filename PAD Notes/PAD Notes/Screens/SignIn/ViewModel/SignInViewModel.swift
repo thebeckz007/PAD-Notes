@@ -35,7 +35,10 @@ class SignInViewModel: ObservableObject, SignInViewModelprotocol {
     
     @Published var isShownRegisterAccountScreen: Bool = false
     @Published var errMessage: String = ""
+    
+    @Published var isSignInSuccess: Bool = false
     @Published var isShownError: Bool = false
+    
     
     init(signinModel: SignInModelprotocol) {
         self.signinModel = signinModel
@@ -71,6 +74,7 @@ class SignInViewModel: ObservableObject, SignInViewModelprotocol {
             switch result {
             case .success(let authUser):
                 self.authUser = authUser!
+                self.isSignInSuccess = true
             case .failure(let error):
                 self.errMessage = error.localizedDescription
                 self.isShownError = true
@@ -82,5 +86,6 @@ class SignInViewModel: ObservableObject, SignInViewModelprotocol {
         self.authStatus = .NotStart
         self.errMessage = ""
         self.isShownError = false
+        self.isSignInSuccess = false
     }
 }

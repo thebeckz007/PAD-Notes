@@ -24,12 +24,9 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
     @Published var errMessage: String = ""
     @Published var isShownError: Bool = false
     
-    init(model: NotesListModelprotocol, user: AuthenticationUser, arrNotes: [NoteModel] = [NoteModel](), errMessage: String = "", isShownError: Bool = false) {
+    init(model: NotesListModelprotocol, user: AuthenticationUser) {
         self.model = model
         self.user = user
-        self.arrNotes = arrNotes
-        self.errMessage = errMessage
-        self.isShownError = isShownError
     }
     
     func getAllNotesByUser() {
