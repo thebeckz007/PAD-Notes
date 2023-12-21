@@ -9,7 +9,7 @@ import Foundation
 
 /// List all abtract methods, variables for Base Foundation what used in this app
 protocol BaseFoundationProtocol {
-    var log: LogProtocol {get}
+    
 }
 
 /// List all abtract methods, variables for BaseBuilder
