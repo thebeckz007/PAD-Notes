@@ -37,6 +37,8 @@ class SignUpViewModel: ObservableObject, SignUpViewModelprotocol {
     func signUp() {
         self.resetAuthentication()
         
+        self.authStatus = .InProgess
+        
         model.SignUp(email: email, password: password) {  result in
             self.handleAuthenticationResult(result: result)
         }

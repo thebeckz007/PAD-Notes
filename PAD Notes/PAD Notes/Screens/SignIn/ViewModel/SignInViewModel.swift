@@ -48,6 +48,8 @@ class SignInViewModel: ObservableObject, SignInViewModelprotocol {
     func signin() {
         self.resetAuthentication()
         
+        self.authStatus = .InProgess
+        
         signinModel.SignIn(email: email, password: password) {  result in
             self.handleAuthenticationResult(result: result)
         }
@@ -57,6 +59,8 @@ class SignInViewModel: ObservableObject, SignInViewModelprotocol {
     //
     func authenticateWithSocial(_ type: AuthenticationSupportingSocialType) {
         self.resetAuthentication()
+        
+        self.authStatus = .InProgess
         
         signinModel.AuthenticateWithSocial(type) { result in
             self.handleAuthenticationResult(result: result)
@@ -69,6 +73,8 @@ class SignInViewModel: ObservableObject, SignInViewModelprotocol {
     
     // MARK: private functions
     fileprivate func handleAuthenticationResult(result: Result<AuthenticationUser?, Error>) {
+        self.resetAuthentication()
+        
         DispatchQueue.main.async {
             self.authStatus = .Finished
             switch result {

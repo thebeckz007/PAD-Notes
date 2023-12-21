@@ -19,6 +19,8 @@ protocol HomePageViewModelprotocol: BaseViewModelProtocol {
 class HomePageViewModel: ObservableObject, HomePageViewModelprotocol {
     private let model: HomePageModelprotocol
     @Published var user: AuthenticationUser?
+    @Published var isShownLogInView: Bool = false
+    @Published var isShownNotesListView: Bool = false
     
     init(model: HomePageModelprotocol) {
         self.model = model
@@ -26,5 +28,12 @@ class HomePageViewModel: ObservableObject, HomePageViewModelprotocol {
     
     func GetCurrentUser() {
         self.user = self.model.GetCurrentUser()
+        if let user = self.user {
+            self.isShownLogInView = false
+            self.isShownNotesListView = !self.isShownLogInView
+        } else {
+            self.isShownLogInView = true
+            self.isShownNotesListView = !self.isShownLogInView
+        }
     }
 }

@@ -33,17 +33,25 @@ struct HomePageView : View, HomePageViewprotocol {
     
     //
     var body: some View {
-        NavigationView(content: {
-            VStack {
-                if let user = viewmodel.user {
-                    NotesListBuilder.setupNotesListView(user: user)
-                } else {
-                    SignInBuilder.setupSignin()
-                }
-            }
-        })
+        VStack {
+            AppLogoImage()
+            AppNameText()
+        }
+        //
         .onAppear(perform: {
             viewmodel.GetCurrentUser()
+        })
+        //
+        .fullScreenCover(isPresented: $viewmodel.isShownLogInView, onDismiss: {
+            viewmodel.GetCurrentUser()
+        }, content: {
+            SignInBuilder.setupSignin()
+        })
+        //
+        .fullScreenCover(isPresented: $viewmodel.isShownNotesListView, onDismiss: {
+            viewmodel.GetCurrentUser()
+        }, content: {
+            NotesListBuilder.setupNotesListView(user: self.viewmodel.user!)
         })
     }
     
