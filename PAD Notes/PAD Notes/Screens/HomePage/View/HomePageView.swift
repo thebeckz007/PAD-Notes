@@ -34,10 +34,12 @@ struct HomePageView : View, HomePageViewprotocol {
     //
     var body: some View {
         NavigationView(content: {
-            if let user = viewmodel.user {
-                NotesListBuilder.setupNotesListView(user: user)
-            } else {
-                SignInBuilder.setupSignin()
+            VStack {
+                if let user = viewmodel.user {
+                    NotesListBuilder.setupNotesListView(user: user)
+                } else {
+                    SignInBuilder.setupSignin()
+                }
             }
         })
         .onAppear(perform: {

@@ -18,9 +18,9 @@ protocol SignInModelprotocol: BaseModelProtocol {
 // MARK: struct SignInModel
 /// struct SignInModel
 struct SignInModel: SignInModelprotocol {
-    private let authModule: AuthenticationModuleProtocol
+    private let authModule: AuthenticationEmailProtocol & AuthenticationSocialProtocol
     
-    init(authModule: AuthenticationModuleProtocol) {
+    init(authModule: AuthenticationEmailProtocol & AuthenticationSocialProtocol) {
         self.authModule = authModule
     }
     

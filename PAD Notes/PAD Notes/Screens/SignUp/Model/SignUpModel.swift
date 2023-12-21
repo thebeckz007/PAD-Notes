@@ -17,9 +17,9 @@ protocol SignUpModelprotocol: BaseModelProtocol {
 // MARK: struct SignUpModel
 /// struct SignUpModel
 struct SignUpModel: SignUpModelprotocol {
-    private let authModule: AuthenticationModuleProtocol
+    private let authModule: AuthenticationEmailProtocol
     
-    init(authModule: AuthenticationModuleProtocol) {
+    init(authModule: AuthenticationEmailProtocol) {
         self.authModule = authModule
     }
     

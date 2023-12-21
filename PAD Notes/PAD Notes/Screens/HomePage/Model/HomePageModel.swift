@@ -11,19 +11,19 @@ import Foundation
 // MARK: Protocol HomePageModelprotocol
 /// protocol HomePageModelprotocol
 protocol HomePageModelprotocol: BaseModelProtocol {
-    func GetCurrentUser() -> AuthenticationUser
+    func GetCurrentUser() -> AuthenticationUser?
 }
 
 // MARK: struct HomePageModel
 /// struct HomePageModel
 struct HomePageModel: HomePageModelprotocol {
-    private let authModule: AuthenticationModuleProtocol
+    private let authModule: AuthenticationUserProtocol
     
-    init(authModule: AuthenticationModuleProtocol) {
+    init(authModule: AuthenticationUserProtocol) {
         self.authModule = authModule
     }
     
-    func GetCurrentUser() -> AuthenticationUser {
+    func GetCurrentUser() -> AuthenticationUser? {
         return self.authModule.GetCurrentUser()
     }
 }
