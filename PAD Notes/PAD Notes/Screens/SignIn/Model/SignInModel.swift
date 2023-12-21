@@ -25,9 +25,7 @@ struct SignInModel: SignInModelprotocol {
     }
     
     func SignIn(email: String, password: String, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 1000000000000), execute: {
-            self.authModule.SignIn(email: email, password: password, completion: completion)
-        })
+        self.authModule.SignIn(email: email, password: password, completion: completion)
     }
     
     func AuthenticateWithSocial(_ type: AuthenticationSupportingSocialType, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion) {

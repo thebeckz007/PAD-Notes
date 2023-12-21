@@ -19,6 +19,10 @@
 		70A28F362B33F641003474F5 /* SignInBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F2A2B33E48F003474F5 /* SignInBuilder.swift */; };
 		70A28F372B33F641003474F5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F282B33E48F003474F5 /* SignInView.swift */; };
 		70A28F382B33F641003474F5 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F242B33E48F003474F5 /* SignInViewModel.swift */; };
+		70A28F482B343EF3003474F5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F3D2B343D30003474F5 /* SignUpViewModel.swift */; };
+		70A28F492B343EF3003474F5 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F412B343D30003474F5 /* SignUpView.swift */; };
+		70A28F4A2B343EF3003474F5 /* SignUpBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F432B343D30003474F5 /* SignUpBuilder.swift */; };
+		70A28F4B2B343EF3003474F5 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F3F2B343D30003474F5 /* SignUpModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,10 @@
 		70A28F2A2B33E48F003474F5 /* SignInBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInBuilder.swift; sourceTree = "<group>"; };
 		70A28F2B2B33E48F003474F5 /* MVVMBaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMBaseProtocol.swift; sourceTree = "<group>"; };
 		70A28F322B33E58A003474F5 /* AuthenticationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModule.swift; sourceTree = "<group>"; };
+		70A28F3D2B343D30003474F5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		70A28F3F2B343D30003474F5 /* SignUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		70A28F412B343D30003474F5 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		70A28F432B343D30003474F5 /* SignUpBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				70A28F2B2B33E48F003474F5 /* MVVMBaseProtocol.swift */,
+				70A28F3B2B343D30003474F5 /* SignUp */,
 				70A28F222B33E48F003474F5 /* SignIn */,
 			);
 			path = Screens;
@@ -220,6 +229,49 @@
 				70A28F322B33E58A003474F5 /* AuthenticationModule.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		70A28F3B2B343D30003474F5 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F3C2B343D30003474F5 /* ViewModel */,
+				70A28F3E2B343D30003474F5 /* Model */,
+				70A28F402B343D30003474F5 /* View */,
+				70A28F422B343D30003474F5 /* Builder */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		70A28F3C2B343D30003474F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F3D2B343D30003474F5 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		70A28F3E2B343D30003474F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F3F2B343D30003474F5 /* SignUpModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		70A28F402B343D30003474F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F412B343D30003474F5 /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70A28F422B343D30003474F5 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F432B343D30003474F5 /* SignUpBuilder.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,11 +405,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A28F372B33F641003474F5 /* SignInView.swift in Sources */,
+				70A28F4A2B343EF3003474F5 /* SignUpBuilder.swift in Sources */,
 				70A28F382B33F641003474F5 /* SignInViewModel.swift in Sources */,
+				70A28F482B343EF3003474F5 /* SignUpViewModel.swift in Sources */,
 				70A28EF22B33E2C2003474F5 /* PAD_NotesApp.swift in Sources */,
 				70A28F362B33F641003474F5 /* SignInBuilder.swift in Sources */,
 				70A28F352B33F641003474F5 /* SignInModel.swift in Sources */,
 				70A28F302B33E48F003474F5 /* MVVMBaseProtocol.swift in Sources */,
+				70A28F4B2B343EF3003474F5 /* SignUpModel.swift in Sources */,
+				70A28F492B343EF3003474F5 /* SignUpView.swift in Sources */,
 				70A28F342B33F63B003474F5 /* AuthenticationModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

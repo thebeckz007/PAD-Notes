@@ -1,5 +1,5 @@
 //
-//  SignInView.swift
+//  SignUpView.swift
 //  PAD Notes
 //
 //  Created by Phan Anh Duy on 21/12/2023.
@@ -8,26 +8,26 @@
 
 import SwiftUI
 
-// MARK: struct constIDViewSignInView
+// MARK: struct constIDViewSignUpView
 /// List IDview of all views as a const variable
-struct constIDViewSignInView {
+struct constIDViewSignUpView {
     // TODO: Define IDView of all view compenents in here
     // Example with naming convention for this
     // static let _idView_<ViewComponent> = "_idView_<ViewComponent>"
 }
 
-// MARK: protocol SignInViewprotocol
-/// protocol SignInViewprotocol
-protocol SignInViewprotocol: BaseViewProtocol {
+// MARK: protocol SignUpViewprotocol
+/// protocol SignUpViewprotocol
+protocol SignUpViewprotocol: BaseViewProtocol {
     
 }
 
-// MARK: Struct SignInView
+// MARK: Struct SignUpView
 /// Contruct main view
-struct SignInView : View, SignInViewprotocol {
-    @ObservedObject private var viewmodel: SignInViewModel
+struct SignUpView : View, SignUpViewprotocol {
+    @ObservedObject private var viewmodel: SignUpViewModel
     
-    init(viewmodel: SignInViewModel) {
+    init(viewmodel: SignUpViewModel) {
         self.viewmodel = viewmodel
     }
     
@@ -43,7 +43,7 @@ struct SignInView : View, SignInViewprotocol {
                 .font(.title2)
                 .bold()
                 .padding(.bottom, 20)
-            Text("Log In")
+            Text("Register")
                 .font(.title)
                 .bold()
                 .padding(.bottom, 40)
@@ -77,10 +77,10 @@ struct SignInView : View, SignInViewprotocol {
             }.padding(.vertical, 30)
             
             Button {
-                viewmodel.signin()
+                viewmodel.signUp()
             } label: {
                 ZStack {
-                    Text("Log In")
+                    Text("Register")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -107,7 +107,7 @@ struct SignInView : View, SignInViewprotocol {
 }
 
 #Preview {
-    let model = SignInModel(authModule: AuthenticationModule.sharedInstance)
-    let viewmodel = SignInViewModel(signinModel: model)
-    return SignInView(viewmodel: viewmodel)
+    let model = SignUpModel(authModule: AuthenticationModule.sharedInstance)
+    let viewmodel = SignUpViewModel(model: model)
+    return SignUpView(viewmodel: viewmodel)
 }
