@@ -12,6 +12,9 @@ import Foundation
 /// protocol HomePageViewModelprotocol
 protocol HomePageViewModelprotocol: BaseViewModelProtocol {
     func GetCurrentUser()
+    func startListeningUserStatus()
+    func navigateNotesListView() -> NotesListView
+    func navigateSignInView() -> SignInView
 }
 
 // MARK: class HomePageViewModel
@@ -19,8 +22,6 @@ protocol HomePageViewModelprotocol: BaseViewModelProtocol {
 class HomePageViewModel: ObservableObject, HomePageViewModelprotocol {
     private let model: HomePageModelprotocol
     @Published var user: AuthenticationUser?
-    @Published var isShownLogInView: Bool = false
-    @Published var isShownNotesListView: Bool = false
     
     init(model: HomePageModelprotocol) {
         self.model = model
@@ -28,12 +29,23 @@ class HomePageViewModel: ObservableObject, HomePageViewModelprotocol {
     
     func GetCurrentUser() {
         self.user = self.model.GetCurrentUser()
-        if let user = self.user {
-            self.isShownLogInView = false
-            self.isShownNotesListView = !self.isShownLogInView
-        } else {
-            self.isShownLogInView = true
-            self.isShownNotesListView = !self.isShownLogInView
+    }
+    
+    func startListeningUserStatus() {
+        self.model.listenUserStatus { user in
+            self.user = user
         }
+    }
+    
+    func navigateNotesListView() -> NotesListView {
+        return NotesListBuilder.setupNotesListView(user: self.user!)
+    }
+    
+    func navigateUserProfile() -> UserProfileView {
+        return UserProfileBuilder.setupUserProfile(authUser: self.user!)
+    }
+    
+    func navigateSignInView() -> SignInView {
+        return SignInBuilder.setupSignin()
     }
 }

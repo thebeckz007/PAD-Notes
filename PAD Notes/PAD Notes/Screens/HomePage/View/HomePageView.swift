@@ -34,25 +34,30 @@ struct HomePageView : View, HomePageViewprotocol {
     //
     var body: some View {
         VStack {
-            AppLogoImage()
-            AppNameText()
+            if let _ = viewmodel.user {
+//                viewmodel.navigateNotesListView()
+                // DEBUG: 
+                viewmodel.navigateUserProfile()
+            } else {
+                viewmodel.navigateSignInView()
+            }
         }
         //
         .onAppear(perform: {
-            viewmodel.GetCurrentUser()
+            viewmodel.startListeningUserStatus()
         })
         //
-        .fullScreenCover(isPresented: $viewmodel.isShownLogInView, onDismiss: {
-            viewmodel.GetCurrentUser()
-        }, content: {
-            SignInBuilder.setupSignin()
-        })
-        //
-        .fullScreenCover(isPresented: $viewmodel.isShownNotesListView, onDismiss: {
-            viewmodel.GetCurrentUser()
-        }, content: {
-            NotesListBuilder.setupNotesListView(user: self.viewmodel.user!)
-        })
+//        .fullScreenCover(isPresented: $viewmodel.isShownLogInView, onDismiss: {
+//            viewmodel.GetCurrentUser()
+//        }, content: {
+//            SignInBuilder.setupSignin()
+//        })
+//        //
+//        .fullScreenCover(isPresented: $viewmodel.isShownNotesListView, onDismiss: {
+//            viewmodel.GetCurrentUser()
+//        }, content: {
+//            NotesListBuilder.setupNotesListView(user: self.viewmodel.user!)
+//        })
     }
     
     private func AppLogoImage() -> some View {

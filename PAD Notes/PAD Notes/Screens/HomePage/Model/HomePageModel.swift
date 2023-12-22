@@ -12,6 +12,7 @@ import Foundation
 /// protocol HomePageModelprotocol
 protocol HomePageModelprotocol: BaseModelProtocol {
     func GetCurrentUser() -> AuthenticationUser?
+    func listenUserStatus(completion: @escaping AuthenticationModule.AuthenticationUserListenerCompletion)
 }
 
 // MARK: struct HomePageModel
@@ -25,5 +26,9 @@ struct HomePageModel: HomePageModelprotocol {
     
     func GetCurrentUser() -> AuthenticationUser? {
         return self.authModule.GetCurrentUser()
+    }
+    
+    func listenUserStatus(completion: @escaping AuthenticationModule.AuthenticationUserListenerCompletion) {
+        authModule.listenUserStatus(completion: completion)
     }
 }

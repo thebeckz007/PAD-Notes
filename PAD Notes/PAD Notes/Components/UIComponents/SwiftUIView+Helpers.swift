@@ -7,8 +7,12 @@
 
 import SwiftUI
 
-struct viewLoading : View {
+struct ViewLoading : View {
     var body: some View {
-        return ProgressView().foregroundColor(.blue)
+//        return ProgressView().foregroundColor(.blue)
+        return ProgressView()
+            .scaleEffect(2)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.gray.opacity(0.5))
     }
 }

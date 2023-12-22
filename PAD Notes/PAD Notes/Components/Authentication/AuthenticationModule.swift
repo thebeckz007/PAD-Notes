@@ -21,6 +21,7 @@ protocol AuthenticationUserProtocol {
     func delete(completion: @escaping AuthenticationModule.authenticationUserDeleteCompletion)
     func updatePassword(_ password: String, completion: @escaping AuthenticationModule.authenticationUserUpdateCompletion)
     func updateUser(displayName: String?, photoURL: URL?, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion)
+    func listenUserStatus(completion: @escaping AuthenticationModule.AuthenticationUserListenerCompletion)
 }
 
 protocol AuthenticationEmailProtocol {
@@ -93,6 +94,7 @@ enum AuthenticationModuleError: Error, CustomStringConvertible {
 class AuthenticationModule: AuthenticationModuleProtocol {
     //
     typealias AuthenticationModuleCompletion = (Result<AuthenticationUser?, Error>) -> Void
+    typealias AuthenticationUserListenerCompletion = (AuthenticationUser?) -> Void
     typealias authenticationUserUpdateCompletion = (Error?) -> Void
     typealias authenticationUserDeleteCompletion = (Error?) -> Void
     typealias authenticationUserLogOutCompletion = (Error?) -> Void
@@ -118,6 +120,16 @@ class AuthenticationModule: AuthenticationModuleProtocol {
             return AuthenticationUser(FirUser: user)
         } else {
             return nil
+        }
+    }
+    
+    func listenUserStatus(completion: @escaping AuthenticationModule.AuthenticationUserListenerCompletion) {
+        Auth.auth().addStateDidChangeListener { firAuth, firUser in
+            if let user = firUser {
+                completion(AuthenticationUser(FirUser: user))
+            } else {
+                completion(nil)
+            }
         }
     }
 }

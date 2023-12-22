@@ -50,6 +50,10 @@
 		70A28F902B346F37003474F5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 70A28F8F2B346F37003474F5 /* FirebaseStorage */; };
 		70A28F922B346F37003474F5 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 70A28F912B346F37003474F5 /* FirebaseStorageCombine-Community */; };
 		70A28F942B3476FF003474F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70A28F932B3476FF003474F5 /* GoogleService-Info.plist */; };
+		70A28FA02B3531DA003474F5 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F992B3531DA003474F5 /* UserProfileViewModel.swift */; };
+		70A28FA12B3531DA003474F5 /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F9B2B3531DA003474F5 /* UserProfileModel.swift */; };
+		70A28FA22B3531DA003474F5 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F9D2B3531DA003474F5 /* UserProfileView.swift */; };
+		70A28FA32B3531DA003474F5 /* UserProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F9F2B3531DA003474F5 /* UserProfileBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +104,10 @@
 		70A28F6B2B34688D003474F5 /* HomePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		70A28F6D2B34688D003474F5 /* HomePageBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageBuilder.swift; sourceTree = "<group>"; };
 		70A28F932B3476FF003474F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		70A28F992B3531DA003474F5 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		70A28F9B2B3531DA003474F5 /* UserProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
+		70A28F9D2B3531DA003474F5 /* UserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		70A28F9F2B3531DA003474F5 /* UserProfileBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +237,7 @@
 		70A28F1E2B33E336003474F5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				70A28F972B3531DA003474F5 /* UserProfile */,
 				70A28F652B34688D003474F5 /* HomePage */,
 				70A28F532B34579C003474F5 /* NotesList */,
 				70A28F3B2B343D30003474F5 /* SignUp */,
@@ -435,6 +444,49 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		70A28F972B3531DA003474F5 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F982B3531DA003474F5 /* ViewModel */,
+				70A28F9A2B3531DA003474F5 /* Model */,
+				70A28F9C2B3531DA003474F5 /* View */,
+				70A28F9E2B3531DA003474F5 /* Builder */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		70A28F982B3531DA003474F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F992B3531DA003474F5 /* UserProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		70A28F9A2B3531DA003474F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F9B2B3531DA003474F5 /* UserProfileModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		70A28F9C2B3531DA003474F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F9D2B3531DA003474F5 /* UserProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70A28F9E2B3531DA003474F5 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				70A28F9F2B3531DA003474F5 /* UserProfileBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -595,6 +647,7 @@
 				70A28F482B343EF3003474F5 /* SignUpViewModel.swift in Sources */,
 				70A28F502B345647003474F5 /* SwiftUIView+Helpers.swift in Sources */,
 				70A28F712B34688D003474F5 /* HomePageBuilder.swift in Sources */,
+				70A28FA22B3531DA003474F5 /* UserProfileView.swift in Sources */,
 				70A28F622B34589D003474F5 /* DatabaseModule.swift in Sources */,
 				70A28EF22B33E2C2003474F5 /* PAD_NotesApp.swift in Sources */,
 				70A28F362B33F641003474F5 /* SignInBuilder.swift in Sources */,
@@ -604,9 +657,12 @@
 				70A28F4B2B343EF3003474F5 /* SignUpModel.swift in Sources */,
 				70A28F702B34688D003474F5 /* HomePageView.swift in Sources */,
 				70A28F5C2B34579C003474F5 /* NotesListViewModel.swift in Sources */,
+				70A28FA32B3531DA003474F5 /* UserProfileBuilder.swift in Sources */,
 				70A28F492B343EF3003474F5 /* SignUpView.swift in Sources */,
+				70A28FA12B3531DA003474F5 /* UserProfileModel.swift in Sources */,
 				70A28F5F2B34579C003474F5 /* NotesListBuilder.swift in Sources */,
 				70A28F5E2B34579C003474F5 /* NotesListView.swift in Sources */,
+				70A28FA02B3531DA003474F5 /* UserProfileViewModel.swift in Sources */,
 				70A28F342B33F63B003474F5 /* AuthenticationModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

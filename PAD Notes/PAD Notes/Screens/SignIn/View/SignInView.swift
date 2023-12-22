@@ -34,39 +34,42 @@ struct SignInView : View, SignInViewprotocol {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            AppLogoImage()
-            AppNameText()
-
+        ZStack {
             VStack {
-                EmailTextField()
-                PasswordTextField()
-            }.padding(.vertical, 30)
-            
-            SignInButton()
-            SignUpButton()
-            
-            Spacer()
-        }
-        .padding(.horizontal, 30)
-        .alert("Login Failed", isPresented: $viewmodel.isShownError, actions: {
-            Button("OK", role: .none) {
+                Spacer()
+                
+                AppLogoImage()
+                AppNameText()
+
+                VStack {
+                    EmailTextField()
+                    PasswordTextField()
+                }.padding(.vertical, 30)
+                
+                SignInButton()
+                SignUpButton()
+                
+                Spacer()
             }
-        }, message: {
-            Text(viewmodel.errMessage)
-        })
-        .alert("Login Success!", isPresented: $viewmodel.isSignInSuccess, actions: {
-            Button("OK", role: .none) {
-                dismiss()
+            .padding(.horizontal, 30)
+            .alert("Login Failed", isPresented: $viewmodel.isShownError, actions: {
+                Button("OK", role: .none) {
+                }
+            }, message: {
+                Text(viewmodel.errMessage)
+            })
+            .alert("Login Success!", isPresented: $viewmodel.isSignInSuccess, actions: {
+                Button("OK", role: .none) {
+                    dismiss()
+                }
+            }, message: {
+                Text("Hooray!!!...")
+            })
+            
+            // 
+            if viewmodel.authStatus == .InProgess {
+                ViewLoading()
             }
-        }, message: {
-            Text("Hooray!!!...")
-        })
-        
-        if viewmodel.authStatus == .InProgess {
-            viewLoading()
         }
     }
     

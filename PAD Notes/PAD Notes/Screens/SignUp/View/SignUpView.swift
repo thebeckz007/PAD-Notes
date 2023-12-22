@@ -70,7 +70,7 @@ struct SignUpView : View, SignUpViewprotocol {
         }
         
         if viewmodel.authStatus == .InProgess {
-            viewLoading()
+            ViewLoading()
         }
     }
     
