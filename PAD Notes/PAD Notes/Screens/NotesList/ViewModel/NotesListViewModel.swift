@@ -16,6 +16,7 @@ protocol NotesListViewModelprotocol: BaseViewModelProtocol {
     func searchNotes()
     func newComposeNote() -> NoteDetailView
     func navigateNoteDetail(_ note: NoteModel) -> NoteDetailView
+    func navigateUserProfile() -> UserProfileView
 }
 
 // MARK: class NotesListViewModel
@@ -51,11 +52,11 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
     }
     
     func newComposeNote() -> NoteDetailView {
-        return NoteDetailBuilder.setupDetailNote(nil)
+        return NoteDetailBuilder.setupDetailNote(nil, authUser: self.authUser)
     }
     
     func navigateNoteDetail(_ note: NoteModel) -> NoteDetailView {
-        return NoteDetailBuilder.setupDetailNote(note)
+        return NoteDetailBuilder.setupDetailNote(note, authUser: self.authUser)
     }
     
     func deleteData(at indexSet: IndexSet) {
@@ -79,6 +80,10 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
                 }
             }
         }
+    }
+    
+    func navigateUserProfile() -> UserProfileView {
+        return UserProfileBuilder.setupUserProfile(authUser: self.authUser)
     }
     
     // MARK: private functions

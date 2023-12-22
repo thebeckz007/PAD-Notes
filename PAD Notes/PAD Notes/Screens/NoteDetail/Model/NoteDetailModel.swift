@@ -11,7 +11,8 @@ import Foundation
 // MARK: Protocol NoteDetailModelprotocol
 /// protocol NoteDetailModelprotocol
 protocol NoteDetailModelprotocol: BaseModelProtocol {
-    
+    func addNewNote(userID: String, title: String, content: String, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion)
+    func updateNote(_ note: NoteModel, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion)
 }
 
 // MARK: struct NoteDetailModel
@@ -23,5 +24,11 @@ struct NoteDetailModel: NoteDetailModelprotocol {
         self.dbModule = dbModule
     }
     
+    func addNewNote(userID: String, title: String, content: String, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion) {
+        self.dbModule.addNewNote(userID: userID, title: title, content: content, completion: completion)
+    }
     
+    func updateNote(_ note: NoteModel, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion) {
+        self.dbModule.updateNote(note, completion: completion)
+    }
 }

@@ -46,6 +46,14 @@ struct NotesListView : View, NotesListViewprotocol {
                         }.onDelete(perform: self.viewmodel.deleteData(at:))
                     }
                     .navigationTitle("Notes")
+                    .toolbar {
+                        ToolbarItem (placement: ToolbarItemPlacement.topBarLeading, content: {
+                            UserProfileNavigationLink()
+                        })
+                        ToolbarItem(placement: ToolbarItemPlacement.topBarTrailing) {
+                            ComposeNoteNavigationLink()
+                        }
+                    }
                 }
             }
             
@@ -57,20 +65,30 @@ struct NotesListView : View, NotesListViewprotocol {
         }
     }
     
-    private func UserProfileButton() -> some View {
-        VStack {
-            AsyncImage(url: viewmodel.authUser.photoURL) { image in  
+    private func UserProfileNavigationLink() -> some View {
+        NavigationLink(destination: viewmodel.navigateUserProfile()) {
+            AsyncImage(url: viewmodel.authUser.photoURL) { image in
                 image.resizable()
                     .scaledToFit()
-                    .frame(width: 150)
+                    .frame(width: 30)
             } placeholder: {
                 ZStack {
                     Image("Notes_logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 50)
+                        .frame(width: 30)
                 }
             }
+        }
+    }
+    
+    private func ComposeNoteNavigationLink() -> some View {
+        NavigationLink(destination: viewmodel.newComposeNote()) {
+            Image(systemName: "square.and.pencil")
+                .imageScale(.large)
+                .bold()
+                .accentColor(.mint)
+                .frame(width: 30)
         }
     }
     
@@ -99,19 +117,6 @@ struct NotesListView : View, NotesListViewprotocol {
                         viewmodel.searchingNotes = value
                         viewmodel.searchNotes()
                     })
-            }
-        }
-    }
-    
-    private func ComposeNoteButton() -> some View {
-        VStack {
-            Button {
-                self.viewmodel.newComposeNote()
-            } label: {
-                Image(systemName: "square.and.pencil")
-                    .imageScale(.large)
-                    .bold()
-                    .accentColor(.mint)
             }
         }
     }
