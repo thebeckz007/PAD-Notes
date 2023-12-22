@@ -74,7 +74,7 @@ struct UserProfileView : View, UserProfileViewprotocol {
         Button(action: {
             // FIXME:
         }, label: {
-            AsyncImage(url: viewmodel.authUser.photoURL) { image in  // <-- here
+            AsyncImage(url: viewmodel.authUser.photoURL) { image in
                 image.resizable()
                     .scaledToFit()
                     .frame(width: 150)

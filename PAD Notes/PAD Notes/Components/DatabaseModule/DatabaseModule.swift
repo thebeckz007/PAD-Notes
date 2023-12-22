@@ -8,14 +8,19 @@
 import Foundation
 
 protocol DatabaseModuleProtocol {
-    
+    func configure()
 }
 
-protocol NotesDatabaseProtocol {
-    func getAllNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesDatabaseCompletion)
+protocol NotesListDatabaseProtocol {
+    func getAllNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion)
+    func deleteNotes(noteIDs:[String], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion)
 }
 
-struct NoteModel {
+protocol NoteDatabaseProtocol {
+    func deleteNote(_ noteID: String, completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion)
+}
+
+struct NoteModel: Codable {
     let UID: String
     let NoteID: String
     let Title: String
@@ -37,14 +42,36 @@ struct NoteModel {
     }
 }
 
-class DatabaseModule: DatabaseModuleProtocol, NotesDatabaseProtocol {
-    typealias NotesDatabaseCompletion = (Result<[NoteModel], Error>) -> Void
+class DatabaseModule: DatabaseModuleProtocol {
+    typealias NotesListDatabaseCompletion = (Result<[NoteModel], Error>) -> Void
+    typealias DeleteNotesDatabaseCompletion = (Error?) -> Void
     
     /// a shared instance of LogsModule as singleton instance
     static let sharedInstance = DatabaseModule()
     
-    func getAllNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesDatabaseCompletion) {
+    func configure() {
+        
+    }
+}
+
+extension DatabaseModule: NotesListDatabaseProtocol {
+    func getAllNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion) {
         // FIXME:
-        completion(.success([NoteModel(UID: "123", NoteID: "312", Title: "Test Tittle", Content: AttributedString("content"), CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: false, IsSharing: true)]))
+        completion(.success([
+            NoteModel(UID: "12321", NoteID: "123123", Title: "Test Tittle 1", Content: AttributedString(String("213212312")), CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsSharing: false),
+            NoteModel(UID: "12321", NoteID: "123124", Title: "Test Tittle 2", Content: AttributedString(String("213212312")), CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsSharing: false),
+            NoteModel(UID: "12321", NoteID: "123125", Title: "Test Tittle 3", Content: AttributedString(String("213212312")), CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsSharing: false)]))
+    }
+    
+    func deleteNotes(noteIDs NoteIDs:[String], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion) {
+        // FIXME:
+        completion(nil)
+    }
+}
+
+extension DatabaseModule: NoteDatabaseProtocol {
+    func deleteNote(_ noteID: String, completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion) {
+        // FIXME:
+        completion(nil)
     }
 }

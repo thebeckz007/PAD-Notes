@@ -41,10 +41,6 @@ class HomePageViewModel: ObservableObject, HomePageViewModelprotocol {
         return NotesListBuilder.setupNotesListView(user: self.user!)
     }
     
-    func navigateUserProfile() -> UserProfileView {
-        return UserProfileBuilder.setupUserProfile(authUser: self.user!)
-    }
-    
     func navigateSignInView() -> SignInView {
         return SignInBuilder.setupSignin()
     }

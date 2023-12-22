@@ -35,9 +35,7 @@ struct HomePageView : View, HomePageViewprotocol {
     var body: some View {
         VStack {
             if let _ = viewmodel.user {
-//                viewmodel.navigateNotesListView()
-                // DEBUG: 
-                viewmodel.navigateUserProfile()
+                viewmodel.navigateNotesListView()
             } else {
                 viewmodel.navigateSignInView()
             }
@@ -46,18 +44,6 @@ struct HomePageView : View, HomePageViewprotocol {
         .onAppear(perform: {
             viewmodel.startListeningUserStatus()
         })
-        //
-//        .fullScreenCover(isPresented: $viewmodel.isShownLogInView, onDismiss: {
-//            viewmodel.GetCurrentUser()
-//        }, content: {
-//            SignInBuilder.setupSignin()
-//        })
-//        //
-//        .fullScreenCover(isPresented: $viewmodel.isShownNotesListView, onDismiss: {
-//            viewmodel.GetCurrentUser()
-//        }, content: {
-//            NotesListBuilder.setupNotesListView(user: self.viewmodel.user!)
-//        })
     }
     
     private func AppLogoImage() -> some View {
