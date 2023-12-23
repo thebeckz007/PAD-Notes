@@ -49,6 +49,9 @@ struct NotesListView : View, NotesListViewprotocol {
                             ComposeNoteNavigationLink()
                         }
                     }
+                    .refreshable {
+                        viewmodel.getAllNotesByUser()
+                    }
                 }
             }
             
@@ -96,6 +99,7 @@ struct NotesListView : View, NotesListViewprotocol {
         }
     }
     
+    // TODO:
     private func SearchingNotesTextField() -> some View {
         VStack {
             // contruct Textfield for iOS 17++
@@ -128,6 +132,6 @@ struct NotesListView : View, NotesListViewprotocol {
 
 #Preview {
     let model = NotesListModel(dbModule: DatabaseModule.sharedInstance)
-    let viewmodel = NotesListViewModel(model: model, authUser: AuthenticationUser(UID: "123", email: "123123"))
+    let viewmodel = NotesListViewModel(model: model, authUser: AuthenticationUser(UID: "UkPNaejHqNa00gFrmUyCEfWS4Ow2", email: "123123"))
     return NotesListView(viewmodel: viewmodel)
 }

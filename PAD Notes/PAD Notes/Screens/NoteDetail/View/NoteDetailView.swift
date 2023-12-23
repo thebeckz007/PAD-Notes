@@ -31,6 +31,8 @@ struct NoteDetailView : View, NoteDetailViewprotocol {
         self.viewmodel = viewmodel
     }
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack {
             NavigationStack {
@@ -61,6 +63,8 @@ struct NoteDetailView : View, NoteDetailViewprotocol {
             //
             .alert("Success!", isPresented: $viewmodel.isShownSuccess, actions: {
                 Button("OK", role: .none) {
+                    viewmodel.refreshDataIfNeed()
+                    dismiss()
                 }
             }, message: {
                 Text("Hooray!!!...")

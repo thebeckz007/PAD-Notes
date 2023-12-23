@@ -30,6 +30,8 @@ class NoteDetailViewModel: ObservableObject, NoteDetailViewModelprotocol {
     @Published var titleNote: String = ""
     @Published var contentNote: String = ""
     
+    private var isNewComposeNote: Bool = true
+    
     var disableUpdateNoteButton: Bool {
         ((self.titleNote.isEmpty || self.titleNote.lowercased() ==  self.note!.Title.lowercased())
          && (self.contentNote.isEmpty || self.contentNote.lowercased() ==  self.note!.Content.lowercased()))
@@ -46,6 +48,7 @@ class NoteDetailViewModel: ObservableObject, NoteDetailViewModelprotocol {
         if let noteTemp = note {
             self.titleNote = noteTemp.Title
             self.contentNote = noteTemp.Content
+            self.isNewComposeNote = false
         }
     }
     
@@ -70,6 +73,15 @@ class NoteDetailViewModel: ObservableObject, NoteDetailViewModelprotocol {
             self.model.updateNote(updatedNote) { [weak self] result in
                 self?.handleNoteResult(result: result)
             }
+        }
+    }
+    
+    func refreshDataIfNeed () {
+        if isNewComposeNote {
+            self.note = nil
+            self.titleNote = ""
+            self.contentNote = ""
+            self.isNewComposeNote = true
         }
     }
     

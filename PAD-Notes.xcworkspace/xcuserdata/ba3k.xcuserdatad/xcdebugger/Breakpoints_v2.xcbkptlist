@@ -110,8 +110,8 @@
             filePath = "PAD Notes/PAD Notes/Screens/NoteDetail/ViewModel/NoteDetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "init(model:note:authUser:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,7 +120,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B8244AA2-DFB2-4F18-AC29-3151BF2CB114"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PAD Notes/PAD Notes/Screens/NoteDetail/Builder/NoteDetailBuilder.swift"
