@@ -2,16 +2,19 @@
 A notes application for iOS, iPadOS
 
 # Features 
-- User:
+- User: -> spend time: ~10hrs
     + Create with email/ password
     + Login with email/ password
     + Update display name
     
-- Note: 
+- Note: -> spend time: ~8hrs
     + Create a note
     + Update/ delete a note
     + List out notes by user
     + List out shared notes of all User
+    
+- Unittest: 
+    + 
 
 # Backlogs
 - User:
