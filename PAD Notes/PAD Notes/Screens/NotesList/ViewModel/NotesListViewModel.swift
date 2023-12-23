@@ -32,6 +32,8 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
     @Published var isShownError: Bool = false
     @Published var isShownLoading: Bool = false
     
+    @Published var shouldNavigateComposeNote = false
+    
     init(model: NotesListModelprotocol, authUser: AuthenticationUser) {
         self.model = model
         self.authUser = authUser
@@ -63,21 +65,16 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
         self.resetState()
         
         self.isShownLoading = true
+        
         var arrDeletingNotes = [NoteModel]()
         indexSet.forEach { index in
             arrDeletingNotes.append(self.arrNotes[index])
         }
         
-        self.model.deleteNotes(noteIDs: arrDeletingNotes.map{$0.NoteID}) { [weak self] Error in
+        self.model.deleteNotes(notes: arrDeletingNotes) { [weak self] removedNotes in
             DispatchQueue.main.async {
-                if let err = Error {
-                    self?.errMessage = err.localizedDescription
-                    self?.isShownError = true
-                } else {
-                    indexSet.forEach { index in
-                        self?.arrNotes.remove(at: index)
-                    }
-                }
+                self?.isShownLoading = false
+                self?.arrNotes = self?.arrNotes.filter{!removedNotes.contains($0)} ?? [NoteModel]()
             }
         }
     }

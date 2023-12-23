@@ -12,6 +12,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // setup Authentication Module
         AuthenticationModule.sharedInstance.Configure()
+        
+        // setup Database Module
+        DatabaseModule.sharedInstance.configure(firDBRef: RealtimeDatabaseFirebaseModule.sharedInstance)
+        
         return true
     }
 }

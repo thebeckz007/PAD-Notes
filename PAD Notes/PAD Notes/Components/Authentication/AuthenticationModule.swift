@@ -76,11 +76,11 @@ extension AuthenticationUser {
     }
 }
 
-enum AuthenticationModuleError: Error, CustomStringConvertible {
+enum AuthenticationModuleError: Error {
   case NotExistingAccount
   case Unknown
 
-  var description: String {
+  var localizedDescription: String {
     switch self {
     case .NotExistingAccount:
       return "Account does not exist"

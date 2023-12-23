@@ -12,7 +12,7 @@ import Foundation
 /// protocol NotesListModelprotocol
 protocol NotesListModelprotocol: BaseModelProtocol {
     func getAllNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion)
-    func deleteNotes(noteIDs:[String], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion)
+    func deleteNotes(notes:[NoteModel], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion)
 }
 
 // MARK: struct NotesListModel
@@ -25,10 +25,10 @@ struct NotesListModel: NotesListModelprotocol {
     }
     
     func getAllNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion) {
-        self.dbModule.getAllNotesByUser(userId, completion: completion)
+        self.dbModule.queryNotesByUser(userId, completion: completion)
     }
     
-    func deleteNotes(noteIDs:[String], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion) {
-        self .dbModule.deleteNotes(noteIDs: noteIDs, completion: completion)
+    func deleteNotes(notes:[NoteModel], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion) {
+        self .dbModule.deleteNotes(notes: notes, completion: completion)
     }
 }

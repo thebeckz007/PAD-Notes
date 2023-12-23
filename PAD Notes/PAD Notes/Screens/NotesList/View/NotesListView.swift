@@ -36,13 +36,8 @@ struct NotesListView : View, NotesListViewprotocol {
             VStack {
                 NavigationStack {
                     List {
-                        ForEach(viewmodel.arrNotes, id:\.NoteID) { Note in
-                            NavigationLink(destination: viewmodel.navigateNoteDetail(Note)) {
-                                VStack(alignment: .leading) {
-                                    Text(Note.Title).font(.system(size: 22, weight: .regular))
-                                    Text("Updated at \(Note.UpdatedAt.formatted(date: Date.FormatStyle.DateStyle.omitted, time: Date.FormatStyle.TimeStyle.shortened))").foregroundStyle(.gray)
-                                }.frame(maxHeight: 200)
-                            }
+                        ForEach(viewmodel.arrNotes, id:\.NoteID) { note in
+                            noteViewList(note: note)
                         }.onDelete(perform: self.viewmodel.deleteData(at:))
                     }
                     .navigationTitle("Notes")
@@ -62,6 +57,15 @@ struct NotesListView : View, NotesListViewprotocol {
             }
         }.onAppear {
             viewmodel.getAllNotesByUser()
+        }
+    }
+    
+    private func noteViewList(note: NoteModel) -> some View {
+        NavigationLink(destination: viewmodel.navigateNoteDetail(note)) {
+            VStack(alignment: .leading) {
+                Text(note.Title).font(.system(size: 22, weight: .regular))
+                Text("Updated at \(note.UpdatedAt.formatted(date: Date.FormatStyle.DateStyle.omitted, time: Date.FormatStyle.TimeStyle.shortened))").foregroundStyle(.gray)
+            }.frame(maxHeight: 200)
         }
     }
     

@@ -8,115 +8,145 @@
 import Foundation
 
 protocol DatabaseModuleProtocol {
-    func configure()
+    func configure(firDBRef: RealtimeDatabaseFirebaseModuleProtocol)
 }
 
 protocol NotesListDatabaseProtocol {
-    func getAllNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion)
-    func deleteNotes(noteIDs:[String], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion)
+    func queryNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion)
+    func deleteNotes(notes:[NoteModel], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion)
 }
 
 protocol NoteDatabaseProtocol {
-    func deleteNote(_ noteID: String, completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion)
     func addNewNote(userID: String, title: String, content: String, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion)
     func updateNote(_ note: NoteModel, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion)
     func favoriteNote(_ note: NoteModel, isFavorite: Bool, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion)
     func sharedNote(_ note: NoteModel, isShared: Bool, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion)
+    func deleteNote(_ note: NoteModel, completion: @escaping DatabaseModule.DeleteNoteDatabaseCompletion)
 }
 
-struct NoteModel: Codable {
-    let UID: String
-    let NoteID: String
-    var Title: String
-    var Content: String
-    let CreatedAt: Date
-    var UpdatedAt: Date
-    var IsFavorite: Bool
-    var IsShared: Bool
-    
-    init(UID: String, NoteID: String, Title: String, Content: String, CreatedAt: Date, UpdatedAt: Date, IsFavorite: Bool = false, IsShared: Bool = true) {
-        self.UID = UID
-        self.NoteID = NoteID
-        self.Title = Title
-        self.Content = Content
-        self.CreatedAt = CreatedAt
-        self.UpdatedAt = UpdatedAt
-        self.IsFavorite = IsFavorite
-        self.IsShared = IsShared
-    }
-}
-
-extension NoteModel {
-    init(userID: String, title: String, content: String) {
-        self.init(UID: userID, NoteID: UUID().uuidString, Title: title, Content: content, CreatedAt: Date(), UpdatedAt: Date())
-    }
-}
-
+//
 class DatabaseModule: DatabaseModuleProtocol {
     typealias NotesListDatabaseCompletion = (Result<[NoteModel], Error>) -> Void
-    typealias DeleteNotesDatabaseCompletion = (Error?) -> Void
+    typealias DeleteNotesDatabaseCompletion = ([NoteModel]) -> Void
+    typealias DeleteNoteDatabaseCompletion = (Error?) -> Void
     typealias AddUpdateNoteDatabaseCompletion = (Result<NoteModel, Error>) -> Void
     
     /// a shared instance of LogsModule as singleton instance
     static let sharedInstance = DatabaseModule()
+    private var firDBRef: RealtimeDatabaseFirebaseModuleProtocol!
     
-    func configure() {
-        
+    private let rootChild = "note"
+
+    func configure(firDBRef: RealtimeDatabaseFirebaseModuleProtocol) {
+        self.firDBRef = firDBRef
+        self.firDBRef.configure()
     }
 }
 
 extension DatabaseModule: NotesListDatabaseProtocol {
-    func getAllNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion) {
-        // FIXME:
-        completion(.success([
-            NoteModel(UID: "12321", NoteID: "123123", Title: "Test Tittle 1", Content: String(String("213212312")), CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsShared: false),
-            NoteModel(UID: "12321", NoteID: "123124", Title: "Test Tittle 2", Content: String(String("213212312")), CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsShared: false),
-            NoteModel(UID: "12321", NoteID: "123125", Title: "Test Tittle 3", Content: String(String("213212312")), CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsShared: false)]))
+    func queryNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion) {
+        self.firDBRef.get(at: userId, parentNodes: rootChild) { result in
+            switch result {
+            case .success(let dataSnapshot):
+                var arrNotes = [NoteModel]()
+                if let data = dataSnapshot.value as? NSDictionary {
+                    if let noteIDs = data.allKeys as? Array<Any> {
+                        for noteID in noteIDs {
+                            arrNotes.append(NoteModel(userID: userId, noteID: noteID as! String, dictValue: data[noteID] as! [String : Any]))
+                        }
+                    }
+                }
+                
+                completion(.success(arrNotes))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
-    func deleteNotes(noteIDs NoteIDs:[String], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion) {
-        // FIXME:
-        completion(nil)
+    func deleteNotes(notes:[NoteModel], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion) {
+        let dispatchGroup = DispatchGroup()
+        var removedNotes = [NoteModel]()
+        for note in notes {
+            dispatchGroup.enter()
+            self.deleteNote(note) { error in
+                if error == nil {
+                    removedNotes.append(note)
+                }
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            completion(removedNotes)
+        }
     }
 }
 
 extension DatabaseModule: NoteDatabaseProtocol {
-    func deleteNote(_ noteID: String, completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion) {
-        // FIXME:
-        completion(nil)
-    }
-    
     func addNewNote(userID: String, title: String, content: String, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion) {
         let note = NoteModel.init(userID: userID, title: title, content: content)
         self.addNewNote(note, completion: completion)
     }
     
     func updateNote(_ note: NoteModel, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion) {
-        // FIXME:
         // update UpdatedAt property
         var updatedNote = note
         updatedNote.UpdatedAt = Date()
         
-        completion(.success(updatedNote))
+        self.firDBRef.set(updatedNote.dictionaryNote(), at: updatedNote.NoteID, parentNodes: rootChild, updatedNote.UID) { error in
+            if let err = error {
+                completion(.failure(err))
+            } else {
+                completion(.success(updatedNote))
+            }
+        }
     }
     
     func favoriteNote(_ note: NoteModel, isFavorite: Bool, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion) {
         var updatedNote = note
         updatedNote.IsFavorite = isFavorite
+        updatedNote.UpdatedAt = Date()
         
-        self.updateNote(note, completion: completion)
+        self.firDBRef.set(updatedNote.IsFavorite.description, at: NoteModel.Properties.IsFavorite.stringValue, parentNodes: rootChild, updatedNote.UID, updatedNote.NoteID) { error in
+            if let err = error {
+                completion(.failure(err))
+            } else {
+                completion(.success(updatedNote))
+            }
+        }
     }
     
     func sharedNote(_ note: NoteModel, isShared: Bool, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion) {
         var updatedNote = note
         updatedNote.IsShared = isShared
+        updatedNote.UpdatedAt = Date()
         
-        self.updateNote(note, completion: completion)
+        self.firDBRef.set(updatedNote.IsShared.description, at: NoteModel.Properties.IsShared.stringValue, parentNodes: rootChild, updatedNote.UID, updatedNote.NoteID) { error in
+            if let err = error {
+                completion(.failure(err))
+            } else {
+                completion(.success(updatedNote))
+            }
+        }
+    }
+    
+    func deleteNote(_ note: NoteModel, completion: @escaping DatabaseModule.DeleteNoteDatabaseCompletion) {
+        self.firDBRef.delete(at: note.NoteID, parentNodes: rootChild, note.UID) { error in
+            completion(error)
+        }
     }
     
     // MARK: private functions
-    func addNewNote(_ note: NoteModel, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion) {
-        // FIXME:
-        completion(.success(note))
+    private func addNewNote(_ note: NoteModel, completion: @escaping DatabaseModule.AddUpdateNoteDatabaseCompletion) {
+        self.firDBRef.set(note.dictionaryNote(), at: note.NoteID, parentNodes: rootChild, note.UID) { error in
+            if let err = error {
+                completion(.failure(err))
+            } else {
+                completion(.success(note))
+            }
+        }
     }
 }
+
+
