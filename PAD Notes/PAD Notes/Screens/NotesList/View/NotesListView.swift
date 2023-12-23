@@ -36,9 +36,17 @@ struct NotesListView : View, NotesListViewprotocol {
             VStack {
                 NavigationStack {
                     List {
-                        ForEach(viewmodel.arrNotes, id:\.NoteID) { note in
-                            noteViewList(note: note)
-                        }.onDelete(perform: self.viewmodel.deleteData(at:))
+                        Section(header: Text(viewmodel.authUser.displayName ?? viewmodel.authUser.email)) {
+                            ForEach(viewmodel.arrNotes, id:\.NoteID) { note in
+                                noteViewList(note: note)
+                            }.onDelete(perform: self.viewmodel.deleteData(at:))
+                        }
+                        
+                        Section(header: Text("Shared Notes")) {
+                            ForEach(viewmodel.arrSharedNotes, id:\.NoteID) { note in
+                                noteViewList(note: note)
+                            }
+                        }
                     }
                     .navigationTitle("Notes")
                     .toolbar {
@@ -50,7 +58,7 @@ struct NotesListView : View, NotesListViewprotocol {
                         }
                     }
                     .refreshable {
-                        viewmodel.getAllNotesByUser()
+                        viewmodel.getAllNotes()
                     }
                 }
             }
@@ -59,7 +67,7 @@ struct NotesListView : View, NotesListViewprotocol {
                 ViewLoading()
             }
         }.onAppear {
-            viewmodel.getAllNotesByUser()
+            viewmodel.getAllNotes()
         }
     }
     

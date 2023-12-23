@@ -23,6 +23,7 @@ protocol RealtimeDatabaseFirebaseModuleProtocol {
     func configure()
     func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback)
     func get(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.DataCallback)
+    func get(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.DataCallback)
     func delete(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback)
 }
 
@@ -51,7 +52,7 @@ public class RealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProto
     }
 
     // MARK: Private Functions
-    private func set(_ value: Any, at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback) {
+    func set(_ value: Any, at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback) {
         do {
             try makeReference(child: child, parentNodes: parentNodes).setValue(value) { (error, _) in
                 completion(error)
@@ -61,7 +62,7 @@ public class RealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProto
         }
     }
     
-    private func get(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.DataCallback) {
+    func get(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.DataCallback) {
         do {
             try makeReference(child: child, parentNodes: parentNodes).observeSingleEvent(of: .value) { (data) in
                 completion(.success(data))
@@ -71,7 +72,7 @@ public class RealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProto
         }
     }
     
-    private func delete(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback) {
+    func delete(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback) {
         do {
             try makeReference(child: child, parentNodes: parentNodes).removeValue { (error, _) in
                 completion(error)

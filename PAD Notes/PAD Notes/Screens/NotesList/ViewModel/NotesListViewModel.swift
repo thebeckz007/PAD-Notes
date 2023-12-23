@@ -11,7 +11,9 @@ import Foundation
 // MARK: Protocol NotesListViewModelprotocol
 /// protocol NotesListViewModelprotocol
 protocol NotesListViewModelprotocol: BaseViewModelProtocol {
+    func getAllNotes()
     func getAllNotesByUser()
+    func getAllSharedNotesExcludUser()
     func deleteData(at indexSet: IndexSet)
     func searchNotes()
     func newComposeNote() -> NoteDetailView
@@ -26,6 +28,7 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
 
     @Published var authUser: AuthenticationUser
     @Published var arrNotes: [NoteModel] = [NoteModel]()
+    @Published var arrSharedNotes: [NoteModel] = [NoteModel]()
     @Published var searchingNotes: String = ""
     
     @Published var errMessage: String = ""
@@ -39,6 +42,11 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
         self.authUser = authUser
     }
     
+    func getAllNotes() {
+        self.getAllNotesByUser()
+        self.getAllSharedNotesExcludUser()
+    }
+    
     func getAllNotesByUser() {
         self.resetState()
         
@@ -46,6 +54,19 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
         
         self.model.getAllNotesByUser(self.authUser.UID) { [weak self] result in
             self?.handleNotesListResult(result: result)
+        }
+    }
+    
+    func getAllSharedNotesExcludUser() {
+        self.model.getAllSharedNotesExcluedUser(self.authUser.UID) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let arrNotes):
+                    self?.arrSharedNotes = arrNotes.sorted(by: { $0.UpdatedAt.compare($1.UpdatedAt) == .orderedDescending})
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
     

@@ -30,8 +30,8 @@
             filePath = "PAD Notes/PAD Notes/Screens/NotesList/ViewModel/NotesListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "navigateUserProfile()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "PAD Notes/PAD Notes/Screens/NotesList/ViewModel/NotesListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "newComposeNote()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "PAD Notes/PAD Notes/Screens/NotesList/ViewModel/NotesListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "navigateNoteDetail(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "PAD Notes/PAD Notes/Components/DatabaseModule/DatabaseModule.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "queryNotesByUser(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "PAD Notes/PAD Notes/Components/DatabaseModule/DatabaseModule.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "queryNotesByUser(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -129,6 +129,322 @@
             startingLineNumber = "21"
             endingLineNumber = "21"
             landmarkName = "setupDetailNote(_:authUser:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9E2CB2F3-EFD5-4023-B5C3-C7165F63599B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD Notes/Screens/NotesList/ViewModel/NotesListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "getAllSharedNotesExcludUser()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9E2CB2F3-EFD5-4023-B5C3-C7165F63599B - b626164148043557"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; () in PAD_Notes.NotesListViewModel.getAllSharedNotesExcludUser() -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Screens/NotesList/ViewModel/NotesListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "9E2CB2F3-EFD5-4023-B5C3-C7165F63599B - b626164148043557"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; () in PAD_Notes.NotesListViewModel.getAllSharedNotesExcludUser() -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Screens/NotesList/ViewModel/NotesListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4FC5B2A9-2C07-4CCD-BA68-197A8E482262"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD Notes/Components/DatabaseModule/DatabaseModule.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "querySharedNotesExcludeUser(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4FC5B2A9-2C07-4CCD-BA68-197A8E482262 - 5e606d89db5bf315"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  uuid = "4FC5B2A9-2C07-4CCD-BA68-197A8E482262 - 5e606d89db5bf166"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  uuid = "4FC5B2A9-2C07-4CCD-BA68-197A8E482262 - 5e606d89db5bf166"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "560">
+               </Location>
+               <Location
+                  uuid = "4FC5B2A9-2C07-4CCD-BA68-197A8E482262 - 5e606d89db5bf166"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "876">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7427BB2-66D0-418F-B540-0E89E1A30849"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD Notes/Components/DatabaseModule/DatabaseModule.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "querySharedNotesExcludeUser(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E7427BB2-66D0-418F-B540-0E89E1A30849 - 5e606d89db5bf105"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  uuid = "E7427BB2-66D0-418F-B540-0E89E1A30849 - 5e606d89db5bf105"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "208">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34DC242C-E79F-4A3C-86ED-DC34FA0DC0F6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD Notes/Components/DatabaseModule/DatabaseModule.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "querySharedNotesExcludeUser(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "34DC242C-E79F-4A3C-86ED-DC34FA0DC0F6 - 5e606d89db5bf334"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  uuid = "34DC242C-E79F-4A3C-86ED-DC34FA0DC0F6 - af90963f68db6374"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.NoteModel) -&gt; Swift.Bool in closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "34DC242C-E79F-4A3C-86ED-DC34FA0DC0F6 - 5e606d89db5bf334"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "2580">
+               </Location>
+               <Location
+                  uuid = "34DC242C-E79F-4A3C-86ED-DC34FA0DC0F6 - 5e606d89db5bf334"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "2620">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD0D85CF-3940-4C09-AD25-D4FACCFDE8B8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD Notes/Components/DatabaseModule/DatabaseModule.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "querySharedNotesExcludeUser(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BD0D85CF-3940-4C09-AD25-D4FACCFDE8B8 - 5e606d89db5bf2e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1708">
+               </Location>
+               <Location
+                  uuid = "BD0D85CF-3940-4C09-AD25-D4FACCFDE8B8 - 5e606d89db5bf2e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.DatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1772">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B14CE2BF-85EF-41CB-B696-359F11F399BE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD Notes/Components/DatabaseModule/DatabaseModule.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "querySharedNotesExcludeUser(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

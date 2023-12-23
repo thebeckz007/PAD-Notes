@@ -13,6 +13,7 @@ protocol DatabaseModuleProtocol {
 
 protocol NotesListDatabaseProtocol {
     func queryNotesByUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion)
+    func querySharedNotesExcludeUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion)
     func deleteNotes(notes:[NoteModel], completion: @escaping DatabaseModule.DeleteNotesDatabaseCompletion)
 }
 
@@ -58,6 +59,33 @@ extension DatabaseModule: NotesListDatabaseProtocol {
                 }
                 
                 completion(.success(arrNotes))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func querySharedNotesExcludeUser(_ userId: String, completion: @escaping DatabaseModule.NotesListDatabaseCompletion) {
+        self.firDBRef.get(at: rootChild, parentNodes: []) { result in
+            switch result {
+            case .success(let dataSnapshot):
+                print(dataSnapshot)
+                var arrNotes = [NoteModel]()
+                if let dataRoot = dataSnapshot.value as? NSDictionary {
+                    if let uIDs = dataRoot.allKeys as? Array<Any> {
+                        for uID in uIDs {
+                            if let dataByUser = dataRoot[uID] as? NSDictionary {
+                                if let noteIDs = dataByUser.allKeys as? Array<Any> {
+                                    for noteID in noteIDs {
+                                        arrNotes.append(NoteModel(userID: uID as! String, noteID: noteID as! String, dictValue: dataByUser[noteID] as! [String : Any]))
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                completion(.success(arrNotes.filter{ $0.UID != userId }))
             case .failure(let error):
                 completion(.failure(error))
             }
