@@ -32,7 +32,7 @@ class HomePageViewModel: ObservableObject, HomePageViewModelprotocol {
     }
     
     func startListeningUserStatus() {
-        self.model.listenUserStatus { user in
+        self.model.startListeningUserStatus { user in
             self.user = user
         }
     }

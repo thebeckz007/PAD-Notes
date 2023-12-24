@@ -11,33 +11,76 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
+// MARK: protocol AuthenticationModuleProtocol
+/// protocol AuthenticationModuleProtocol
 protocol AuthenticationModuleProtocol {
+    /// Configure something
     func Configure()
 }
 
+// MARK: protocol AuthenticationUserProtocol
+/// protocol AuthenticationUserProtocol
+/// List of functions for user
 protocol AuthenticationUserProtocol {
+    /// get current user
+    /// - returns: the current user
     func GetCurrentUser() -> AuthenticationUser?
+    
+    /// Perform signing user out
+    /// - parameter completion: the call back result with format (Error?). It means the signing user out is success if we don't have any error.
     func signOut(completion: @escaping AuthenticationModule.authenticationUserLogOutCompletion)
+    
+    /// Perform deleting user
+    /// - parameter completion: the call back result with format (Error?). It means the deleting user is success if we don't have any error.
     func delete(completion: @escaping AuthenticationModule.authenticationUserDeleteCompletion)
+    
+    /// Perform updating password of user
+    /// - parameter password: the new password what will be updated
+    /// - parameter completion: the call back result with format (Error?). It means the updating password of user  is success if we don't have any error.
     func updatePassword(_ password: String, completion: @escaping AuthenticationModule.authenticationUserUpdateCompletion)
+    
+    /// Perform updating display name of user
+    /// - parameter displayName: the new display name os user
+    /// - parameter photoURL: the link of photo profile of user
+    /// - parameter completion: the call back result with format (Result<AuthenticationUser?, Error>). It means the updating new information of user  is success if we have a updated user and no errors.
     func updateUser(displayName: String?, photoURL: URL?, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion)
-    func listenUserStatus(completion: @escaping AuthenticationModule.AuthenticationUserListenerCompletion)
+    
+    /// Start listening of the the user status changing
+    /// - parameter completion: the call back result with format (AuthenticationUser?) . If AuthenticationUser is nil -> user just logged out, and if AuthenticationUser is not nil -> user just logged in.
+    func startListeningUserStatus(completion: @escaping AuthenticationModule.AuthenticationUserListenerCompletion)
+    
+    /// Stop listening of the the user status changing
+    func stopListeningUserStatus()
 }
 
+// MARK: protocol AuthenticationEmailProtocol
+/// protocol AuthenticationEmailProtocol
+/// List of functions for user using email/ password
 protocol AuthenticationEmailProtocol {
     func SignUp(email: String, password: String, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion)
     func SignIn(email: String, password: String, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion)
 }
 
+// MARK: protocol AuthenticationSocialProtocol
+/// protocol AuthenticationSocialProtocol
+/// List of functions for user using social
 protocol AuthenticationSocialProtocol {
     func AuthenticateWithSocial(_ type: AuthenticationSupportingSocialType, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion)
 }
 
+/// Enum AuthenticationSupportingSocialType
+/// list of supporting social so far
 enum AuthenticationSupportingSocialType: UInt {
+    /// Google sign in
     case Google = 1
+    
+    /// Facebook sign in
     case Facebook = 2
+    
+    /// Apple sign in
     case Apple = 3
     
+    /// The name as string type
     var name: String {
         switch self {
         case .Google:
@@ -50,13 +93,27 @@ enum AuthenticationSupportingSocialType: UInt {
     }
 }
 
+/// struct AuthenticationUser
 struct AuthenticationUser {
+    /// user ID as string
     let UID: String
+    
+    /// Email of user as string
     let email: String
+    
+    /// Link of photo profile as URL
     let photoURL: URL?
+    
+    /// Display name of user as string
     let displayName: String?
+    
+    /// First name of user as string
     let firstName: String?
+    
+    /// Last name of user as string
     let lastName: String?
+    
+    /// Date of birth of user as Date
     let DateOfBirth: Date?
     
     init(UID: String, email: String, photoURL: URL? = nil, displayName: String? = nil, firstName: String? = nil, lastName: String? = nil, DateOfBirth: Date? = nil) {
@@ -71,23 +128,29 @@ struct AuthenticationUser {
 }
 
 extension AuthenticationUser {
+    /// Initalize AuthenticationUser from FirUser of Firebase Authentication User
+    /// - parameter User: an User as FirUser
     init(FirUser: User) {
         self.init(UID: FirUser.uid, email: FirUser.email ?? "", photoURL: FirUser.photoURL, displayName: FirUser.displayName)
     }
 }
 
+/// Error handling for AuthenticationModule
 enum AuthenticationModuleError: Error {
-  case NotExistingAccount
-  case Unknown
+    /// Not existing account/ User error
+    case NotExistingAccount
+    
+    /// Unkonw error
+    case Unknown
 
-  var localizedDescription: String {
-    switch self {
-    case .NotExistingAccount:
-      return "Account does not exist"
-    case .Unknown:
-        return "Unknown Error"
+    var localizedDescription: String {
+      switch self {
+      case .NotExistingAccount:
+        return "Account does not exist"
+      case .Unknown:
+          return "Unknown Error"
+      }
     }
-  }
 }
 
 //
@@ -100,7 +163,7 @@ class AuthenticationModule: AuthenticationModuleProtocol {
     typealias authenticationUserLogOutCompletion = (Error?) -> Void
     
     //
-    /// a shared instance of LogsModule as singleton instance
+    /// a shared instance of AuthenticationModule as singleton instance
     static let sharedInstance = AuthenticationModule()
     
     func Configure() {
@@ -123,20 +186,49 @@ class AuthenticationModule: AuthenticationModuleProtocol {
         }
     }
     
-    func listenUserStatus(completion: @escaping AuthenticationModule.AuthenticationUserListenerCompletion) {
-        Auth.auth().addStateDidChangeListener { firAuth, firUser in
-            if let user = firUser {
-                completion(AuthenticationUser(FirUser: user))
-            } else {
-                completion(nil)
+    /// Instance of AuthStateDidChangeListenerHandle
+    private var listenerUserStatus: AuthStateDidChangeListenerHandle?
+    
+    /// The list of AuthenticationModule.AuthenticationUserListenerCompletion
+    private var arrCompletionListenerUserStatus = [AuthenticationModule.AuthenticationUserListenerCompletion]()
+    
+    func startListeningUserStatus(completion: @escaping AuthenticationModule.AuthenticationUserListenerCompletion) {
+        // add completion to arrCompletionListenerUserStatus
+        self.arrCompletionListenerUserStatus.append(completion)
+        
+        // check listenerUserStatus was created or not
+        guard self.listenerUserStatus == nil else {
+            return
+        }
+        
+        self.listenerUserStatus = Auth.auth().addStateDidChangeListener {[weak self] firAuth, firUser in
+            if let guardSelf = self {
+                if let user = firUser {
+                    for completionListener in guardSelf.arrCompletionListenerUserStatus {
+                        completionListener(AuthenticationUser(FirUser: user))
+                    }
+                } else {
+                    for completionListener in guardSelf.arrCompletionListenerUserStatus {
+                        completionListener(nil)
+                    }
+                }
             }
+        }
+    }
+    
+    func stopListeningUserStatus() {
+        if let listener = self.listenerUserStatus {
+            Auth.auth().removeStateDidChangeListener(listener)
+            
+            // Reset and remove listener instance and list of completions
+            self.listenerUserStatus = nil
+            self.arrCompletionListenerUserStatus.removeAll()
         }
     }
 }
 
-/// Confirm AuthenticationUserProtocol
+/// Confirmming AuthenticationUserProtocol
 extension AuthenticationModule: AuthenticationUserProtocol {
-    //
     func signOut(completion: @escaping AuthenticationModule.authenticationUserLogOutCompletion) {
         do {
             try Auth.auth().signOut()
@@ -146,7 +238,6 @@ extension AuthenticationModule: AuthenticationUserProtocol {
         }
     }
     
-    //
     func delete(completion: @escaping AuthenticationModule.authenticationUserDeleteCompletion) {
         if let user = Auth.auth().currentUser {
             user.delete { error in
@@ -184,7 +275,7 @@ extension AuthenticationModule: AuthenticationUserProtocol {
     }
 }
 
-// Confirm AuthenticationEmailProtocol
+// Confirmming AuthenticationEmailProtocol
 extension AuthenticationModule: AuthenticationEmailProtocol {
     func SignUp(email: String, password: String, completion: @escaping AuthenticationModuleCompletion) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -207,12 +298,10 @@ extension AuthenticationModule: AuthenticationEmailProtocol {
     }
 }
  
-// Confirm AuthenticationSocialProtocol
+// Confirmming AuthenticationSocialProtocol
 extension AuthenticationModule: AuthenticationSocialProtocol {
     func AuthenticateWithSocial(_ type: AuthenticationSupportingSocialType, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion) {
-        // FIXME:
+        // FIXME: Support it later
         completion(.success(AuthenticationUser(UID: "17235712683", email: "thebeckz007@gmail.com")))
     }
 }
-
-

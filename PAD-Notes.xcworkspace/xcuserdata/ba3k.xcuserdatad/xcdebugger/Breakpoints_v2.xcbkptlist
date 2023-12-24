@@ -381,6 +381,21 @@
                   endingLineNumber = "88"
                   offsetFromSymbolStart = "2620">
                </Location>
+               <Location
+                  uuid = "34DC242C-E79F-4A3C-86ED-DC34FA0DC0F6 - 370052a3fdffec53"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PAD_Notes.Result&lt;__C.FIRDataSnapshot, Swift.Error&gt;) -&gt; () in PAD_Notes.NoteDatabaseModule.querySharedNotesExcludeUser(_: Swift.String, completion: (PAD_Notes.Result&lt;Swift.Array&lt;PAD_Notes.NoteModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/DatabaseModule/DatabaseModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "2880">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -446,6 +461,54 @@
             endingLineNumber = "151"
             landmarkName = "querySharedNotesExcludeUser(_:completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48E60D66-75E7-4EFD-A8F4-6E30E3555B79"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD Notes/Components/Authentication/AuthenticationModule.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "startListeningUserStatus(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "48E60D66-75E7-4EFD-A8F4-6E30E3555B79 - 9a3ecb2dd8381af5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PAD_Notes.AuthenticationModule.startListeningUserStatus(completion: (Swift.Optional&lt;PAD_Notes.AuthenticationUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/Authentication/AuthenticationModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "48E60D66-75E7-4EFD-A8F4-6E30E3555B79 - 9a3ecb2dd8381af5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PAD_Notes.AuthenticationModule.startListeningUserStatus(completion: (Swift.Optional&lt;PAD_Notes.AuthenticationUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD Notes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20Notes/Components/Authentication/AuthenticationModule.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

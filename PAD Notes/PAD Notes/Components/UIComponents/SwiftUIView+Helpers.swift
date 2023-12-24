@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ViewLoading : View {
     var body: some View {
-//        return ProgressView().foregroundColor(.blue)
         return ProgressView()
             .scaleEffect(2)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
