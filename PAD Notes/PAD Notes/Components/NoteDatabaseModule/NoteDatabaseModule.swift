@@ -32,7 +32,7 @@ protocol NotesListDatabaseProtocol {
     /// Delete list of notes
     /// - parameter notes: the list notes will be deleted
     /// - parameter completion: the call back result of deleted notes with format ([NoteModel]).
-    func deleteNotes(notes:[NoteModel], completion: @escaping NoteDatabaseModule.DeleteNotesDatabaseCompletion)
+    func deleteNotes(notes: [NoteModel], completion: @escaping NoteDatabaseModule.DeleteNotesDatabaseCompletion)
 }
 
 // MARK: protocol NoteDetailDatabaseProtocol
@@ -106,16 +106,14 @@ extension NoteDatabaseModule: NotesListDatabaseProtocol {
                     }
                  }
                  */
-            case .success(let dataSnapshot):
+            case .success(let jsonData):
                 var arrNotes = [NoteModel]()
-                if let data = dataSnapshot.value as? NSDictionary {
-                    if let noteIDs = data.allKeys as? Array<Any> {
-                        for noteID in noteIDs {
-                            arrNotes.append(NoteModel(userID: userId, noteID: noteID as! String, dictValue: data[noteID] as! [String : Any]))
-                        }
+                if let data = jsonData?.convertToDictionary() {
+                    for noteID in data.keys {
+                        arrNotes.append(NoteModel(userID: userId, noteID: noteID, dictValue: data[noteID] as! [String : Any]))
                     }
                 }
-                
+
                 completion(.success(arrNotes))
             case .failure(let error):
                 completion(.failure(error))
@@ -140,22 +138,18 @@ extension NoteDatabaseModule: NotesListDatabaseProtocol {
                     }
                  }
                  */
-            case .success(let dataSnapshot):
-                print(dataSnapshot)
+            case .success(let jsonData):
                 var arrNotes = [NoteModel]()
-                if let dataRoot = dataSnapshot.value as? NSDictionary {
-                    if let uIDs = dataRoot.allKeys as? Array<Any> {
-                        for uID in uIDs {
-                            if let dataByUser = dataRoot[uID] as? NSDictionary {
-                                if let noteIDs = dataByUser.allKeys as? Array<Any> {
-                                    for noteID in noteIDs {
-                                        arrNotes.append(NoteModel(userID: uID as! String, noteID: noteID as! String, dictValue: dataByUser[noteID] as! [String : Any]))
-                                    }
+                
+                if let dataRoot = jsonData?.convertToDictionary() {
+                    for uID in dataRoot.keys {
+                        if let dataByUser = dataRoot[uID] as? [String: Any] {
+                                for noteID in dataByUser.keys {
+                                    arrNotes.append(NoteModel(userID: uID , noteID: noteID , dictValue: dataByUser[noteID] as! [String : Any]))
                                 }
                             }
                         }
                     }
-                }
                 
                 completion(.success(arrNotes.filter{ $0.UID != userId }))
             case .failure(let error):
@@ -164,7 +158,7 @@ extension NoteDatabaseModule: NotesListDatabaseProtocol {
         }
     }
     
-    func deleteNotes(notes:[NoteModel], completion: @escaping NoteDatabaseModule.DeleteNotesDatabaseCompletion) {
+    func deleteNotes(notes: [NoteModel], completion: @escaping NoteDatabaseModule.DeleteNotesDatabaseCompletion) {
         // create dispatch group
         let dispatchNotesGroup = DispatchGroup()
         var removedNotes = [NoteModel]()

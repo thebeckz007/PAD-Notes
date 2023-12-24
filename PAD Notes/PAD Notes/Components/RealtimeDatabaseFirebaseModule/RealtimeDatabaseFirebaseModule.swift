@@ -33,32 +33,45 @@ protocol RealtimeDatabaseFirebaseModuleProtocol {
     /// - parameter child: child node which will be added/ updated value
     /// - parameter parentNodes: the list of parents node of child node as list of string. Example: parent1, parent2, parent3,....
     /// - parameter completion: the call back result with format (Error?). It means adding/ updating value to child node is success if we don't have any errors
-    func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback)
+    func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCompletion)
+    
+    /// create new child node to database or update value to child node
+    /// - parameter value: the value of child node which will added/ updated
+    /// - parameter child: child node which will be added/ updated value
+    /// - parameter parentNodes: the list of parents node of child node as string array. Example: [parent1, parent2, parent3,....]
+    /// - parameter completion: the call back result with format (Error?). It means adding/ updating value to child node is success if we don't have any errors
+    func set(_ value: Any, at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCompletion)
     
     /// get value of child node from database
     /// - parameter child: the child node what will be get the value
     /// - parameter parentNodes: the list of parents node of child node as list of string. Example: parent1, parent2, parent3,....
     /// - parameter completion: the call back result with format (Result<DataSnapshot, Error>)
-    func get(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.DataCallback)
+    func get(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.DataCompletion)
     
     /// get value of child node from database
     /// - parameter child: the child node what will be get the value
     /// - parameter parentNodes: the list of parents node of child node as string array. Example: [parent1, parent2, parent3,....]
     /// - parameter completion: the call back result with format (Result<DataSnapshot, Error>)
-    func get(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.DataCallback)
+    func get(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.DataCompletion)
     
     /// delete child node from database
     /// - parameter child: the child node what will be deleted from database
     /// - parameter parentNodes: the list of parents node of child node as list of string. Example: parent1, parent2, parent3,....
     /// - parameter completion: the call back result with format (Error?). It means deleting child node is success if we don't have any errors
-    func delete(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback)
+    func delete(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCompletion)
+    
+    /// delete child node from database
+    /// - parameter child: the child node what will be deleted from database
+    /// - parameter parentNodes: the list of parents node of child node as string array. Example: [parent1, parent2, parent3,....]
+    /// - parameter completion: the call back result with format (Error?). It means deleting child node is success if we don't have any errors
+    func delete(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCompletion)
 }
 
 // MARK: /// class RealtimeDatabaseFirebaseModule
 /// class RealtimeDatabaseFirebaseModule
 public class RealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProtocol {
-    typealias DataCallback = (Result<DataSnapshot, Error>) -> Void
-    typealias ErrorCallback = (Error?) -> Void
+    typealias DataCompletion = (Result<String?, Error>) -> Void
+    typealias ErrorCompletion = (Error?) -> Void
     
     /// a shared instance of RealtimeDatabaseFirebaseModule as singleton instance
     static let sharedInstance = RealtimeDatabaseFirebaseModule()
@@ -69,20 +82,19 @@ public class RealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProto
         refDB = Database.database().reference()
     }
 
-    func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback) {
+    func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCompletion) {
         set(value, at: child, parentNodes: parentNodes, completion: completion)
     }
 
-    func get(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.DataCallback) {
+    func get(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.DataCompletion) {
         get(at: child, parentNodes: parentNodes, completion: completion)
     }
     
-    func delete(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback) {
+    func delete(at child: String, parentNodes: String..., completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCompletion) {
         delete(at: child, parentNodes: parentNodes, completion: completion)
     }
 
-    // MARK: Private Functions
-    func set(_ value: Any, at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback) {
+    func set(_ value: Any, at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCompletion) {
         do {
             try makeReference(child: child, parentNodes: parentNodes).setValue(value) { (error, _) in
                 completion(error)
@@ -92,17 +104,17 @@ public class RealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProto
         }
     }
     
-    func get(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.DataCallback) {
+    func get(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.DataCompletion) {
         do {
             try makeReference(child: child, parentNodes: parentNodes).observeSingleEvent(of: .value) { (data) in
-                completion(.success(data))
+                completion(.success(data.json))
             }
         } catch {
             completion(.failure(error))
         }
     }
     
-    func delete(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCallback) {
+    func delete(at child: String, parentNodes: [String], completion: @escaping RealtimeDatabaseFirebaseModule.ErrorCompletion) {
         do {
             try makeReference(child: child, parentNodes: parentNodes).removeValue { (error, _) in
                 completion(error)

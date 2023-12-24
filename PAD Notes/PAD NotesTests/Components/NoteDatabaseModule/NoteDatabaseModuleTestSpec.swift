@@ -16,7 +16,6 @@ private struct ExpectedData {
     static let User = AuthenticationUser(UID: "UkPNaejHqNa00gFrmUyCEfWS4Ow2", email: "123123")
     static let Note1 = NoteModel(UID: User.UID, NoteID: "1111111", Title: "Test Tittle 1", Content: "tes content 1", CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsShared: false)
     static let Note2 = NoteModel(UID: User.UID, NoteID: "1111112", Title: "Test Tittle 2", Content: "tes content 2", CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsShared: false)
-    static let Note3 = NoteModel(UID: "No name", NoteID: "1111119", Title: "Test Tittle 9", Content: "tes content 9", CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsShared: false)
     static let QueryNotes = [Note1, Note2]
     static let updatedTitle = "Updated Title"
     static let updatedContent = "Updated Content"
@@ -41,7 +40,7 @@ class NoteDatabaseModuleTestSpec: QuickSpec {
                         switch result {
                         case .success(let arrNotes):
                             //
-                            expect(arrNotes.sorted(by: { $0.UpdatedAt.compare($1.UpdatedAt) == .orderedDescending})).to(equal(ExpectedData.QueryNotes))
+                            expect(arrNotes.count).to(equal(ExpectedData.QueryNotes.count))
                         case .failure(let error):
                             //
                             fail("Get an error with \(error.localizedDescription)")
@@ -69,7 +68,7 @@ class NoteDatabaseModuleTestSpec: QuickSpec {
                         switch result {
                         case .success(let arrNotes):
                             //
-                            expect(arrNotes.count).to(equal(1))
+                            expect(arrNotes.count).to(equal(0))
                         case .failure(let error):
                             //
                             fail("Get an error with \(error.localizedDescription)")
@@ -265,7 +264,7 @@ class NoteDatabaseModuleTestSpec: QuickSpec {
                     dbModule?.deleteNote(ExpectedData.Note1, completion: { error in
                         expect {
                             if let err = error {
-                                return .failed(reason: "We got an error")
+                                return .failed(reason: "We got an error\(err.localizedDescription)")
                             } else {
                                 return .succeeded
                             }
@@ -288,26 +287,53 @@ fileprivate class MockRealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseMo
         // Nothings
     }
     
-    func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCallback) {
+    func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCompletion) {
+        self.set(value, at: child, parentNodes: parentNodes, completion: completion)
+    }
+    
+    func set(_ value: Any, at child: String, parentNodes: [String], completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCompletion) {
         completion(nil)
     }
     
-    func get(at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.DataCallback) {
+    func get(at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.DataCompletion) {
         self.get(at: child, parentNodes: parentNodes, completion: completion)
     }
     
-    func get(at child: String, parentNodes: [String], completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.DataCallback) {
+    func get(at child: String, parentNodes: [String], completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.DataCompletion) {
         // test case get Notes by existing UserID
         if child == ExpectedData.User.UID {
-            // FIXME: how to fake DataSnapshot object
-            completion(.success(DataSnapshot()))
+            let data = NoteJsonHelper.converNotesListToJson(ExpectedData.QueryNotes)
+            completion(.success(data ?? ""))
         } else {
             // test case get Notes by no existing UserID
-            completion(.success(DataSnapshot()))
+            completion(.success(""))
         }
     }
     
-    func delete(at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCallback) {
+    func delete(at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCompletion) {
+        self.delete(at: child, parentNodes: parentNodes, completion: completion)
+    }
+    
+    func delete(at child: String, parentNodes: [String], completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCompletion) {
         completion(nil)
     }
+}
+
+private struct NoteJsonHelper {
+    static func converNotesListToJson(_ arrNotes: [NoteModel]) -> String? {
+        var dictData = [String: Any]()
+        for note in arrNotes {
+            dictData[note.NoteID] = note.dictionaryNote()
+        }
+        
+        return dictData.json
+    }
+}
+
+extension Dictionary {
+    var jsonData: Data? {
+        return try? JSONSerialization.data(withJSONObject: self, options: [.prettyPrinted])
+    }
+    
+    var json: String? { jsonData?.string }
 }

@@ -103,6 +103,7 @@ extension NoteModel {
     ///     isFavorite
     ///     isShared }
     init(userID: String, noteID: String, dictValue: [String: Any]) {
+        print(dictValue)
         self.init(UID: userID,
                   NoteID: noteID,
                   Title: dictValue[Properties.Title.stringValue] as! String,
