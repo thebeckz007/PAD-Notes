@@ -14,7 +14,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         AuthenticationModule.sharedInstance.Configure()
         
         // setup Database Module
-        DatabaseModule.sharedInstance.configure(firDBRef: RealtimeDatabaseFirebaseModule.sharedInstance)
+        NoteDatabaseModule.sharedInstance.configure(firDBRef: RealtimeDatabaseFirebaseModule.sharedInstance)
         
         return true
     }

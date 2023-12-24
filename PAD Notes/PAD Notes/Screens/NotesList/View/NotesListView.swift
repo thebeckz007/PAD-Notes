@@ -139,7 +139,7 @@ struct NotesListView : View, NotesListViewprotocol {
 }
 
 #Preview {
-    let model = NotesListModel(dbModule: DatabaseModule.sharedInstance)
+    let model = NotesListModel(dbModule: NoteDatabaseModule.sharedInstance)
     let viewmodel = NotesListViewModel(model: model, authUser: AuthenticationUser(UID: "UkPNaejHqNa00gFrmUyCEfWS4Ow2", email: "123123"))
     return NotesListView(viewmodel: viewmodel)
 }

@@ -18,7 +18,7 @@ protocol NoteDetailBuilderprotocol: BaseBuilderProtocol {
 /// class NoteDetailBuilder
 class NoteDetailBuilder: NoteDetailBuilderprotocol {
     class func setupDetailNote(_ note: NoteModel?, authUser: AuthenticationUser) -> NoteDetailView {
-         let model = NoteDetailModel(dbModule: DatabaseModule.sharedInstance)
+         let model = NoteDetailModel(dbModule: NoteDatabaseModule.sharedInstance)
          let viewmodel = NoteDetailViewModel(model: model, note: note, authUser: authUser)
          let view = NoteDetailView(viewmodel: viewmodel)
          

@@ -18,7 +18,7 @@ protocol NotesListBuilderprotocol: BaseBuilderProtocol {
 /// class NotesListBuilder
 class NotesListBuilder: NotesListBuilderprotocol {
     class func setupNotesListView(user: AuthenticationUser) -> NotesListView {
-         let model = NotesListModel(dbModule: DatabaseModule.sharedInstance)
+         let model = NotesListModel(dbModule: NoteDatabaseModule.sharedInstance)
          let viewmodel = NotesListViewModel(model: model, authUser: user)
          let view = NotesListView(viewmodel: viewmodel)
          

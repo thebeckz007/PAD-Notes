@@ -7,14 +7,33 @@
 
 import Foundation
 
+// MARK: struct NoteModel
+/// struct NoteModel
 struct NoteModel: Codable {
+    /// user ID who owns the note
     let UID: String
+    
+    /// note ID of the note
     let NoteID: String
+    
+    /// title of the note
     var Title: String
+    
+    /// content of the note
     var Content: String
+    
+    /// the time what the note was created
     let CreatedAt: Date
+    
+    /// the last time what the note was updated
     var UpdatedAt: Date
+    
+    /// true -> the note was favorited
+    /// false -> the note was unfavorited
     var IsFavorite: Bool
+    
+    /// true -> the note was shared
+    /// false -> the note was unshared
     var IsShared: Bool
     
     init(UID: String, NoteID: String, Title: String, Content: String, CreatedAt: Date, UpdatedAt: Date, IsFavorite: Bool = false, IsShared: Bool = true) {

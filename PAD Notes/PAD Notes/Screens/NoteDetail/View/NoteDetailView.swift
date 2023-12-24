@@ -129,7 +129,7 @@ struct NoteDetailView : View, NoteDetailViewprotocol {
 }
 
 #Preview {
-    let model = NoteDetailModel(dbModule: DatabaseModule.sharedInstance)
+    let model = NoteDetailModel(dbModule: NoteDatabaseModule.sharedInstance)
     let viewmodel = NoteDetailViewModel(model: model, note: NoteModel(UID: "12321", NoteID: "123123", Title: "Test Tittle", Content: "The first version of SwiftUI, released along with iOS 13, didn't come with a native UI component for a multiline text field. To support multiline input, developers had to wrap a UITextView from the UIKit framework and make it available to their SwiftUI project by adopting the UIViewRepresentable protocol. In iOS 14, Apple introduced a new component called TextEditor for the SwiftUI framework. This TextEditor enables developers to display and edit multiline text in your apps. Additionally, in iOS 16, Apple further improved the built-in TextField to support multiline input. In this chapter, we will demonstrate how to utilize both TextEditor and TextField for handling multiline input in your SwiftUI apps.", CreatedAt: Date(), UpdatedAt: Date(), IsFavorite: true, IsShared: false), authUser: AuthenticationUser(UID: "123", email: "Thebeckz007@gmail.com", photoURL: URL(string: "https://developer.apple.com/assets/elements/icons/swiftui/swiftui-128x128_2x.png"), displayName: "Duy Phan"))
     return NoteDetailView(viewmodel: viewmodel)
 }
