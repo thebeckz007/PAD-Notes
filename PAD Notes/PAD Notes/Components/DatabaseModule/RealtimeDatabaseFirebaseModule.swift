@@ -112,10 +112,13 @@ public class RealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProto
         }
     }
     
+    // MARK: private functions
+    
     /// generate the path of parent nodes with child node
     /// - parameter child: the child node
     /// - parameter parentNodes: the list of parents node of child node as list of string. Example: parent1, parent2, parent3,....
-    /// - result : "Parent Node1/ Parent Node2/ Parent Node3/ ..../ Child Node"
+    /// - throws: Throw an error as RealtimeDatabaseFirebaseModuleError.invalidPath if we can't generate a path
+    /// - returns : a string as "Parent Node1/ Parent Node2/ Parent Node3/ ..../ Child Node"
     private func makeReference(child: String, parentNodes: String...) throws -> DatabaseReference {
         return try makeReference(child: child, parentNodes: parentNodes)
     }
@@ -123,7 +126,8 @@ public class RealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProto
     /// generate the path of parent nodes with child node
     /// - parameter child: the child node
     /// - parameter parentNodes: the list of parents node of child node as string array. Example: [parent1, parent2, parent3,....]
-    /// - result : "Parent Node1/ Parent Node2/ Parent Node3/ ..../ Child Node"
+    /// - throws: Throw an error as RealtimeDatabaseFirebaseModuleError.invalidPath if we can't generate a path
+    /// - returns : a path as "Parent Node1/ Parent Node2/ Parent Node3/ ..../ Child Node"
     private func makeReference(child: String, parentNodes: [String]) throws -> DatabaseReference {
         do {
             return try refDB.child(String.makePath(child: child, parentNodes: parentNodes))

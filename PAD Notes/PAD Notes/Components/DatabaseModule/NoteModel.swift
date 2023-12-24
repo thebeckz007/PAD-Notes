@@ -55,11 +55,29 @@ struct NoteModel: Codable {
 //
 extension NoteModel {
     init(userID: String, title: String, content: String) {
+        /// initalize Notemodel
+        /// - parameter userID: the user id who owns/ creates the note
+        /// - parameter NoteID: the ID of the note
+        /// - parameter Title: the title of the note
+        /// - parameter Content: the content of the note
+        /// - parameter CreatedAt: the time what the note was created
+        /// - parameter UpdatedAt: the last time what the note was updated
         self.init(UID: userID, NoteID: UUID().uuidString, Title: title, Content: content, CreatedAt: Date(), UpdatedAt: Date())
     }
 }
 
 extension NoteModel {
+    /// Generate a dictionary of the note
+    /// - returns: a dictionary of the note
+    /// NOTE:
+    /// The schema of dictionary of the note
+    /// NoteId:
+    ///     { title
+    ///     content
+    ///     createdAt
+    ///     updatedAt
+    ///     isFavorite
+    ///     isShared }
     func dictionaryNote() -> [String: Any] {
         return [Properties.Title.stringValue: self.Title,
                 Properties.Content.stringValue: self.Content,
@@ -71,6 +89,19 @@ extension NoteModel {
 }
 
 extension NoteModel {
+    /// initalize Notemodel
+    /// - parameter userID: the user id who owns/ creates the note
+    /// - parameter noteID: the ID of the note
+    /// - parameter dictValue: the values of note as dictionary
+    /// NOTE:
+    /// The schema of dictionary of the note
+    /// NoteId:
+    ///     { title
+    ///     content
+    ///     createdAt
+    ///     updatedAt
+    ///     isFavorite
+    ///     isShared }
     init(userID: String, noteID: String, dictValue: [String: Any]) {
         self.init(UID: userID,
                   NoteID: noteID,
@@ -83,6 +114,7 @@ extension NoteModel {
     }
 }
 
+/// Conforming Equatable protocol
 extension NoteModel: Equatable {
     static func == (lhs: NoteModel, rhs: NoteModel) -> Bool {
             return lhs.NoteID == rhs.NoteID
