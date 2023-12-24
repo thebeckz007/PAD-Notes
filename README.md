@@ -14,7 +14,9 @@ A notes application for iOS, iPadOS
     + List out shared notes of all User
     
 - Unittest: 
-    + 
+    + NoteDatabaseModule: -> spend time: ~4hrs
+        + Test NotesListDatabaseProtocol
+        + Test NotesDetailDatabaseProtocol 
 
 # Backlogs
 - User:
@@ -42,3 +44,14 @@ A notes application for iOS, iPadOS
 - Firebase Authentication: to authenticate user by email/ password, Social
 - Firebase Realtime database: to store note data
 - Quick, Nimble framework: to write UnitTest
+
+# Database Schema
+Note:
+    userId:
+        NoteId:
+            Title:      // string
+            Content:    // string
+            createdAt:  // number
+            updatedAt:  // number
+            isFavorite: // bool
+            isShared:   // bool
