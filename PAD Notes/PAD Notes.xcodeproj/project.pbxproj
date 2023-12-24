@@ -10,7 +10,6 @@
 		70A28EF22B33E2C2003474F5 /* PAD_NotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28EF12B33E2C2003474F5 /* PAD_NotesApp.swift */; };
 		70A28EF62B33E2C3003474F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A28EF52B33E2C3003474F5 /* Assets.xcassets */; };
 		70A28EF92B33E2C3003474F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A28EF82B33E2C3003474F5 /* Preview Assets.xcassets */; };
-		70A28F032B33E2C3003474F5 /* PAD_NotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F022B33E2C3003474F5 /* PAD_NotesTests.swift */; };
 		70A28F0D2B33E2C4003474F5 /* PAD_NotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F0C2B33E2C4003474F5 /* PAD_NotesUITests.swift */; };
 		70A28F0F2B33E2C4003474F5 /* PAD_NotesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F0E2B33E2C4003474F5 /* PAD_NotesUITestsLaunchTests.swift */; };
 		70A28F302B33E48F003474F5 /* MVVMBaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F2B2B33E48F003474F5 /* MVVMBaseProtocol.swift */; };
@@ -28,7 +27,7 @@
 		70A28F5D2B34579C003474F5 /* NotesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F572B34579C003474F5 /* NotesListModel.swift */; };
 		70A28F5E2B34579C003474F5 /* NotesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F592B34579C003474F5 /* NotesListView.swift */; };
 		70A28F5F2B34579C003474F5 /* NotesListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F5B2B34579C003474F5 /* NotesListBuilder.swift */; };
-		70A28F622B34589D003474F5 /* DatabaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F612B34589D003474F5 /* DatabaseModule.swift */; };
+		70A28F622B34589D003474F5 /* NoteDatabaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F612B34589D003474F5 /* NoteDatabaseModule.swift */; };
 		70A28F6E2B34688D003474F5 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F672B34688D003474F5 /* HomePageViewModel.swift */; };
 		70A28F6F2B34688D003474F5 /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F692B34688D003474F5 /* HomePageModel.swift */; };
 		70A28F702B34688D003474F5 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28F6B2B34688D003474F5 /* HomePageView.swift */; };
@@ -61,6 +60,9 @@
 		70EEC5112B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5102B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift */; };
 		70EEC5132B36A9AC0093C411 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5122B36A9AC0093C411 /* String+Path.swift */; };
 		70EEC5152B36AED40093C411 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5142B36AED40093C411 /* NoteModel.swift */; };
+		70EEC5232B386A410093C411 /* NoteDatabaseModuleTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5222B386A410093C411 /* NoteDatabaseModuleTestSpec.swift */; };
+		70EEC5262B386AA10093C411 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 70EEC5252B386AA10093C411 /* Quick */; };
+		70EEC5282B386AA10093C411 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 70EEC5272B386AA10093C411 /* Nimble */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +88,6 @@
 		70A28EF52B33E2C3003474F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70A28EF82B33E2C3003474F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		70A28EFE2B33E2C3003474F5 /* PAD NotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PAD NotesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		70A28F022B33E2C3003474F5 /* PAD_NotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAD_NotesTests.swift; sourceTree = "<group>"; };
 		70A28F082B33E2C4003474F5 /* PAD NotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PAD NotesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A28F0C2B33E2C4003474F5 /* PAD_NotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAD_NotesUITests.swift; sourceTree = "<group>"; };
 		70A28F0E2B33E2C4003474F5 /* PAD_NotesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAD_NotesUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -105,7 +106,7 @@
 		70A28F572B34579C003474F5 /* NotesListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListModel.swift; sourceTree = "<group>"; };
 		70A28F592B34579C003474F5 /* NotesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListView.swift; sourceTree = "<group>"; };
 		70A28F5B2B34579C003474F5 /* NotesListBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListBuilder.swift; sourceTree = "<group>"; };
-		70A28F612B34589D003474F5 /* DatabaseModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModule.swift; sourceTree = "<group>"; };
+		70A28F612B34589D003474F5 /* NoteDatabaseModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatabaseModule.swift; sourceTree = "<group>"; };
 		70A28F672B34688D003474F5 /* HomePageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		70A28F692B34688D003474F5 /* HomePageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
 		70A28F6B2B34688D003474F5 /* HomePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
@@ -122,6 +123,7 @@
 		70EEC5102B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealtimeDatabaseFirebaseModule.swift; sourceTree = "<group>"; };
 		70EEC5122B36A9AC0093C411 /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		70EEC5142B36AED40093C411 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		70EEC5222B386A410093C411 /* NoteDatabaseModuleTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatabaseModuleTestSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EEC5262B386AA10093C411 /* Quick in Frameworks */,
+				70EEC5282B386AA10093C411 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +176,7 @@
 				70A28F012B33E2C3003474F5 /* PAD NotesTests */,
 				70A28F0B2B33E2C4003474F5 /* PAD NotesUITests */,
 				70A28EEF2B33E2C2003474F5 /* Products */,
+				70EEC5242B386AA10093C411 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,7 +213,8 @@
 		70A28F012B33E2C3003474F5 /* PAD NotesTests */ = {
 			isa = PBXGroup;
 			children = (
-				70A28F022B33E2C3003474F5 /* PAD_NotesTests.swift */,
+				70EEC51D2B3869C80093C411 /* Components */,
+				70EEC51C2B3869AF0093C411 /* Screens */,
 			);
 			path = "PAD NotesTests";
 			sourceTree = "<group>";
@@ -225,7 +231,7 @@
 		70A28F1B2B33E320003474F5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				70A28F602B345802003474F5 /* DatabaseModule */,
+				70A28F602B345802003474F5 /* NoteDatabaseModule */,
 				70A28F4E2B345647003474F5 /* UIComponents */,
 				70A28F312B33E56B003474F5 /* Authentication */,
 			);
@@ -408,15 +414,15 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
-		70A28F602B345802003474F5 /* DatabaseModule */ = {
+		70A28F602B345802003474F5 /* NoteDatabaseModule */ = {
 			isa = PBXGroup;
 			children = (
-				70A28F612B34589D003474F5 /* DatabaseModule.swift */,
+				70A28F612B34589D003474F5 /* NoteDatabaseModule.swift */,
 				70EEC5102B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift */,
 				70EEC5122B36A9AC0093C411 /* String+Path.swift */,
 				70EEC5142B36AED40093C411 /* NoteModel.swift */,
 			);
-			path = DatabaseModule;
+			path = NoteDatabaseModule;
 			sourceTree = "<group>";
 		};
 		70A28F652B34688D003474F5 /* HomePage */ = {
@@ -548,6 +554,60 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		70EEC51C2B3869AF0093C411 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				70EEC5212B386A010093C411 /* SignUp */,
+				70EEC5202B3869FB0093C411 /* SignIn */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		70EEC51D2B3869C80093C411 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				70EEC51F2B3869DE0093C411 /* NoteDatabaseModule */,
+				70EEC51E2B3869D00093C411 /* AuthenticationModule */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		70EEC51E2B3869D00093C411 /* AuthenticationModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AuthenticationModule;
+			sourceTree = "<group>";
+		};
+		70EEC51F2B3869DE0093C411 /* NoteDatabaseModule */ = {
+			isa = PBXGroup;
+			children = (
+				70EEC5222B386A410093C411 /* NoteDatabaseModuleTestSpec.swift */,
+			);
+			path = NoteDatabaseModule;
+			sourceTree = "<group>";
+		};
+		70EEC5202B3869FB0093C411 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		70EEC5212B386A010093C411 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		70EEC5242B386AA10093C411 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -600,6 +660,10 @@
 				70A28F002B33E2C3003474F5 /* PBXTargetDependency */,
 			);
 			name = "PAD NotesTests";
+			packageProductDependencies = (
+				70EEC5252B386AA10093C411 /* Quick */,
+				70EEC5272B386AA10093C411 /* Nimble */,
+			);
 			productName = "PAD NotesTests";
 			productReference = 70A28EFE2B33E2C3003474F5 /* PAD NotesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -656,6 +720,8 @@
 			mainGroup = 70A28EE52B33E2C2003474F5;
 			packageReferences = (
 				70A28F722B346F37003474F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				70EEC5162B3869310093C411 /* XCRemoteSwiftPackageReference "Quick" */,
+				70EEC5192B3869530093C411 /* XCRemoteSwiftPackageReference "Nimble" */,
 			);
 			productRefGroup = 70A28EEF2B33E2C2003474F5 /* Products */;
 			projectDirPath = "";
@@ -711,7 +777,7 @@
 				70A28FAF2B3584B4003474F5 /* NoteDetailViewModel.swift in Sources */,
 				70A28F712B34688D003474F5 /* HomePageBuilder.swift in Sources */,
 				70A28FA22B3531DA003474F5 /* UserProfileView.swift in Sources */,
-				70A28F622B34589D003474F5 /* DatabaseModule.swift in Sources */,
+				70A28F622B34589D003474F5 /* NoteDatabaseModule.swift in Sources */,
 				70A28EF22B33E2C2003474F5 /* PAD_NotesApp.swift in Sources */,
 				70A28F362B33F641003474F5 /* SignInBuilder.swift in Sources */,
 				70A28F5D2B34579C003474F5 /* NotesListModel.swift in Sources */,
@@ -739,7 +805,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70A28F032B33E2C3003474F5 /* PAD_NotesTests.swift in Sources */,
+				70EEC5232B386A410093C411 /* NoteDatabaseModuleTestSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,6 +1141,22 @@
 				minimumVersion = 10.19.1;
 			};
 		};
+		70EEC5162B3869310093C411 /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		70EEC5192B3869530093C411 /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1157,6 +1239,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 70A28F722B346F37003474F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		70EEC5252B386AA10093C411 /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70EEC5162B3869310093C411 /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
+		};
+		70EEC5272B386AA10093C411 /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70EEC5192B3869530093C411 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

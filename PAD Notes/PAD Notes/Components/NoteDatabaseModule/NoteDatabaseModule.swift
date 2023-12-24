@@ -96,15 +96,15 @@ extension NoteDatabaseModule: NotesListDatabaseProtocol {
             switch result {
                 /**
                  The scheme of note database
-                 note:
-                    { userId:
-                        [ NoteId:
-                            { title
-                            content
-                            createdAt
-                            updatedAt
-                            isFavorite
-                            isShared } ]
+                 { NoteId:
+                    { title
+                     content
+                     createdAt
+                     updatedAt
+                     isFavorite
+                     isShared 
+                    }
+                 }
                  */
             case .success(let dataSnapshot):
                 var arrNotes = [NoteModel]()
@@ -128,15 +128,17 @@ extension NoteDatabaseModule: NotesListDatabaseProtocol {
             switch result {
                 /**
                  The scheme of note database
-                 note:
-                    { userId:
-                        [ NoteId:
-                            { title
-                            content
-                            createdAt
-                            updatedAt
-                            isFavorite
-                            isShared } ]
+                 {userId:
+                    { NoteId:
+                        { title
+                         content
+                         createdAt
+                         updatedAt
+                         isFavorite
+                         isShared 
+                        }
+                    }
+                 }
                  */
             case .success(let dataSnapshot):
                 print(dataSnapshot)

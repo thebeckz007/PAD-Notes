@@ -227,7 +227,7 @@ class AuthenticationModule: AuthenticationModuleProtocol {
     }
 }
 
-/// Confirmming AuthenticationUserProtocol
+/// Conformming AuthenticationUserProtocol
 extension AuthenticationModule: AuthenticationUserProtocol {
     func signOut(completion: @escaping AuthenticationModule.authenticationUserLogOutCompletion) {
         do {
@@ -275,7 +275,7 @@ extension AuthenticationModule: AuthenticationUserProtocol {
     }
 }
 
-// Confirmming AuthenticationEmailProtocol
+// Conformming AuthenticationEmailProtocol
 extension AuthenticationModule: AuthenticationEmailProtocol {
     func SignUp(email: String, password: String, completion: @escaping AuthenticationModuleCompletion) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -298,7 +298,7 @@ extension AuthenticationModule: AuthenticationEmailProtocol {
     }
 }
  
-// Confirmming AuthenticationSocialProtocol
+// Conformming AuthenticationSocialProtocol
 extension AuthenticationModule: AuthenticationSocialProtocol {
     func AuthenticateWithSocial(_ type: AuthenticationSupportingSocialType, completion: @escaping AuthenticationModule.AuthenticationModuleCompletion) {
         // FIXME: Support it later
