@@ -473,8 +473,8 @@
             filePath = "PAD Notes/PAD Notes/Components/Authentication/AuthenticationModule.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "startListeningUserStatus(completion:)"
             landmarkType = "7">
             <Locations>
@@ -571,6 +571,21 @@
                   endingLineNumber = "330"
                   offsetFromSymbolStart = "560">
                </Location>
+               <Location
+                  uuid = "D400D5D7-AD93-4C62-87F7-85CEAAC60374 - d681049647129c2a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PAD_NotesTests.NoteJsonHelper.converNotesListToJson(Swift.Array&lt;PAD_Notes.NoteModel&gt;) -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "PAD NotesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20NotesTests/Components/NoteDatabaseModule/NoteDatabaseModuleTestSpec.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "329"
+                  endingLineNumber = "329"
+                  offsetFromSymbolStart = "560">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -588,13 +603,45 @@
             endingLineNumber = "306"
             landmarkName = "get(at:parentNodes:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D9B6D829-C0C6-4130-84F8-27764F04A0B1 - 3c863db8b901402a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PAD_NotesTests.MockRealtimeDatabaseFirebaseModule.get(at: Swift.String, parentNodes: Swift.Array&lt;Swift.String&gt;, completion: (PAD_Notes.Result&lt;Swift.Optional&lt;Swift.String&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD NotesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20NotesTests/Components/NoteDatabaseModule/NoteDatabaseModuleTestSpec.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "368">
+               </Location>
+               <Location
+                  uuid = "D9B6D829-C0C6-4130-84F8-27764F04A0B1 - 3c863db8b9014045"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PAD_NotesTests.MockRealtimeDatabaseFirebaseModule.get(at: Swift.String, parentNodes: Swift.Array&lt;Swift.String&gt;, completion: (PAD_Notes.Result&lt;Swift.Optional&lt;Swift.String&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PAD NotesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ba3k/Documents/Work/Thebeckz007/PAD-Notes/PAD%20Notes/PAD%20NotesTests/Components/NoteDatabaseModule/NoteDatabaseModuleTestSpec.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "368">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F53A0F5B-3BC0-4628-BA75-0AA2FE120328"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PAD Notes/PAD Notes/Components/NoteDatabaseModule/NoteDatabaseModule.swift"
@@ -619,6 +666,70 @@
             startingLineNumber = "106"
             endingLineNumber = "106"
             landmarkName = "init(userID:noteID:dictValue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7DD1F83-3F95-439B-87B5-BF08839AE626"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD NotesTests/Screens/SignIn/SignInModelTestSpec.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "spec()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D759B6FC-4BA5-41E5-AFFF-EAD095C6303C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD NotesTests/Screens/SignIn/SignInModelTestSpec.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "spec()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2779954D-97FE-4516-BF10-C0DE13B3E8DA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD NotesTests/Screens/SignIn/SignInModelTestSpec.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "spec()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "274B4A76-F1A6-4DDA-B0FD-42431E024D35"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PAD Notes/PAD NotesTests/Screens/SignIn/SignInModelTestSpec.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "spec()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
