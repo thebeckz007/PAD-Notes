@@ -688,48 +688,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D759B6FC-4BA5-41E5-AFFF-EAD095C6303C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PAD Notes/PAD NotesTests/Screens/SignIn/SignInModelTestSpec.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "spec()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2779954D-97FE-4516-BF10-C0DE13B3E8DA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PAD Notes/PAD NotesTests/Screens/SignIn/SignInModelTestSpec.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "spec()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "274B4A76-F1A6-4DDA-B0FD-42431E024D35"
+            uuid = "73FCCDCA-A855-405D-8DE8-DE23A8D23F82"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PAD Notes/PAD NotesTests/Screens/SignIn/SignInModelTestSpec.swift"
+            filePath = "PAD Notes/PAD Notes/Screens/SignIn/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "spec()"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "signin()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

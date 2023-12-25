@@ -33,8 +33,8 @@ class SignInModelTestSpec: QuickSpec {
             model = SignInModel(authModule: authModule)
         }
         
-        describe("Test AuthenticationEmailProtocol") {
-            context("User sign in ") {
+        describe("Test SignInModelprotocol") {
+            context("User sign in with Email/ passwrod ") {
                 it("Sign in success") {
                     model?.SignIn(email: ExpectedData.signInUser.email, password: ExpectedData.signInUserPassword, completion: { result in
                         expect {
@@ -61,9 +61,7 @@ class SignInModelTestSpec: QuickSpec {
                     })
                 }
             }
-        }
-        
-        describe("Test AuthenticationSocialProtocol") {
+            
             context("Social user authenticate") {
                 it("Google sign in") {
                     model?.AuthenticateWithSocial(AuthenticationSupportingSocialType.Google, completion: { result in
