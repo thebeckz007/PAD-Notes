@@ -59,12 +59,14 @@ A notes application for iOS, iPadOS. This project is the showcase of MVVM archit
 - Follow SOLID principles
 
 # Database Schema
-Note:
-    userId:
-        NoteId:
-            Title:      // string
-            Content:    // string
-            createdAt:  // number
-            updatedAt:  // number
-            isFavorite: // bool
-            isShared:   // bool
+>
+> 
+    Note:
+        userId:
+            NoteId:
+                Title:      // string
+                Content:    // string
+                createdAt:  // number
+                updatedAt:  // number
+                isFavorite: // bool
+                isShared:   // bool
