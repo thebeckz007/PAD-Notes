@@ -17,6 +17,12 @@ A notes application for iOS, iPadOS
     + NoteDatabaseModule: -> spend time: ~4hrs
         + Test NotesListDatabaseProtocol
         + Test NotesDetailDatabaseProtocol 
+    + SignIn screen: -> spend time: ~1h
+        + Test SignInModel
+        + Test SignInViewModel
+    + SignUp screen: -> spend time: 30mins
+        + Test SignUpModel
+        + Test SignUpViewModel
 
 # Backlogs
 - User:
