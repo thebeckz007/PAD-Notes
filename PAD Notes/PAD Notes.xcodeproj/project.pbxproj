@@ -69,6 +69,8 @@
 		70EEC5312B3927410093C411 /* SignInModelTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5302B3927410093C411 /* SignInModelTestSpec.swift */; };
 		70EEC5332B3927580093C411 /* SignInViewModelTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5322B3927580093C411 /* SignInViewModelTestSpec.swift */; };
 		70EEC5352B392EEC0093C411 /* AuthenticationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5342B392EEC0093C411 /* AuthenticationUser.swift */; };
+		70EEC5372B393F320093C411 /* SignUpModelTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5362B393F320093C411 /* SignUpModelTestSpec.swift */; };
+		70EEC5392B393F400093C411 /* SignUpViewModelTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5382B393F400093C411 /* SignUpViewModelTestSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +138,8 @@
 		70EEC5302B3927410093C411 /* SignInModelTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModelTestSpec.swift; sourceTree = "<group>"; };
 		70EEC5322B3927580093C411 /* SignInViewModelTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModelTestSpec.swift; sourceTree = "<group>"; };
 		70EEC5342B392EEC0093C411 /* AuthenticationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUser.swift; sourceTree = "<group>"; };
+		70EEC5362B393F320093C411 /* SignUpModelTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModelTestSpec.swift; sourceTree = "<group>"; };
+		70EEC5382B393F400093C411 /* SignUpViewModelTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelTestSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +607,8 @@
 		70EEC5212B386A010093C411 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				70EEC5362B393F320093C411 /* SignUpModelTestSpec.swift */,
+				70EEC5382B393F400093C411 /* SignUpViewModelTestSpec.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -829,6 +835,8 @@
 			files = (
 				70EEC5312B3927410093C411 /* SignInModelTestSpec.swift in Sources */,
 				70EEC5232B386A410093C411 /* NoteDatabaseModuleTestSpec.swift in Sources */,
+				70EEC5392B393F400093C411 /* SignUpViewModelTestSpec.swift in Sources */,
+				70EEC5372B393F320093C411 /* SignUpModelTestSpec.swift in Sources */,
 				70EEC5332B3927580093C411 /* SignInViewModelTestSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
