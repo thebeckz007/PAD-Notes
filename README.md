@@ -58,6 +58,20 @@ A notes application for iOS, iPadOS. This project is the showcase of MVVM archit
 - Quick, Nimble framework: to write UnitTest
 - Follow SOLID principles
 
+## Environment
+- XCode 15.0 ++
+- iOS 17 ++
+
+## How to run
+To run/ compile the app, we need to install some libraries from Swift Packages Manager:
+- Firebase:
+    - Authentication
+    - Realtime Database
+ 
+To run Unit-test, we need to install some libraries from Swift Packages Manager:
+- Quick
+- Nimble
+
 # Database Schema
 >
 > 
