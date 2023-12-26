@@ -12,8 +12,9 @@ import Foundation
 /// protocol NotesListModelprotocol
 protocol NotesListModelprotocol: BaseModelProtocol {
     func getAllNotesByUser(_ userId: String, completion: @escaping NoteDatabaseModule.NotesListDatabaseCompletion)
-    func deleteNotes(notes:[NoteModel], completion: @escaping NoteDatabaseModule.DeleteNotesDatabaseCompletion)
+    func deleteNotes(notes:[NoteModel], completion: @escaping NoteDatabaseModule.NotesListwWithoutErrorDatabaseCompletion)
     func getAllSharedNotesExcluedUser(_ userId: String, completion: @escaping NoteDatabaseModule.NotesListDatabaseCompletion)
+    func sharedNotes(_ notes: [NoteModel], isShared: Bool, completion: @escaping NoteDatabaseModule.NotesListwWithoutErrorDatabaseCompletion)
 }
 
 // MARK: struct NotesListModel
@@ -29,11 +30,15 @@ struct NotesListModel: NotesListModelprotocol {
         self.dbModule.queryNotesByUser(userId, completion: completion)
     }
     
-    func deleteNotes(notes:[NoteModel], completion: @escaping NoteDatabaseModule.DeleteNotesDatabaseCompletion) {
+    func deleteNotes(notes:[NoteModel], completion: @escaping NoteDatabaseModule.NotesListwWithoutErrorDatabaseCompletion) {
         self .dbModule.deleteNotes(notes: notes, completion: completion)
     }
     
     func getAllSharedNotesExcluedUser(_ userId: String, completion: @escaping NoteDatabaseModule.NotesListDatabaseCompletion) {
         self.dbModule.querySharedNotesExcludeUser(userId, completion: completion)
+    }
+    
+    func sharedNotes(_ notes: [NoteModel], isShared: Bool, completion: @escaping NoteDatabaseModule.NotesListwWithoutErrorDatabaseCompletion) {
+        self.dbModule.sharedNotes(notes, isShared: isShared, completion: completion)
     }
 }

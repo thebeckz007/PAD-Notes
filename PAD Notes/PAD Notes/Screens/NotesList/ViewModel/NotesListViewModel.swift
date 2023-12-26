@@ -19,6 +19,7 @@ protocol NotesListViewModelprotocol: BaseViewModelProtocol {
     func newComposeNote() -> NoteDetailView
     func navigateNoteDetail(_ note: NoteModel) -> NoteDetailView
     func navigateUserProfile() -> UserProfileView
+    func shareNote(_ note: NoteModel, isShared: Bool)
 }
 
 // MARK: class NotesListViewModel
@@ -94,8 +95,31 @@ class NotesListViewModel: ObservableObject, NotesListViewModelprotocol {
         
         self.model.deleteNotes(notes: arrDeletingNotes) { [weak self] removedNotes in
             DispatchQueue.main.async {
-                self?.isShownLoading = false
-                self?.arrNotes = self?.arrNotes.filter{!removedNotes.contains($0)} ?? [NoteModel]()
+                if let guardself = self {
+                    guardself.arrNotes = guardself.arrNotes.filter{!removedNotes.contains($0)}
+                    guardself.isShownLoading = false
+                }
+            }
+        }
+    }
+    
+    func shareNote(_ note: NoteModel, isShared: Bool) {
+        self.resetState()
+        
+        self.isShownLoading = true
+        
+        self.model.sharedNotes([note], isShared: isShared) { [weak self] notes in
+            DispatchQueue.main.async {
+                if let guardself = self {
+                    for idx in 0..<guardself.arrNotes.count {
+                        let curNote = guardself.arrNotes[idx]
+                        if let updatedNote = notes.filter({$0.NoteID == curNote.NoteID}).first {
+                            guardself.arrNotes[idx] = updatedNote
+                        }
+                    }
+                    
+                    guardself.isShownLoading = false
+                }
             }
         }
     }

@@ -32,7 +32,12 @@ protocol NotesListDatabaseProtocol {
     /// Delete list of notes
     /// - parameter notes: the list notes will be deleted
     /// - parameter completion: the call back result of deleted notes with format ([NoteModel]).
-    func deleteNotes(notes: [NoteModel], completion: @escaping NoteDatabaseModule.DeleteNotesDatabaseCompletion)
+    func deleteNotes(notes: [NoteModel], completion: @escaping NoteDatabaseModule.NotesListwWithoutErrorDatabaseCompletion)
+    
+    /// Update isShared flag  of notes list
+    /// - parameter notes: the list notes will be updated isShared flag
+    /// - parameter completion: the call back result of list of notes which was updated isShared flag  with format ([NoteModel]).
+    func sharedNotes(_ notes: [NoteModel], isShared: Bool, completion: @escaping NoteDatabaseModule.NotesListwWithoutErrorDatabaseCompletion)
 }
 
 // MARK: protocol NoteDetailDatabaseProtocol
@@ -72,7 +77,7 @@ protocol NoteDetailDatabaseProtocol {
 ///  Class NoteDatabaseModule
 class NoteDatabaseModule: NoteDatabaseModuleProtocol {
     typealias NotesListDatabaseCompletion = (Result<[NoteModel], Error>) -> Void
-    typealias DeleteNotesDatabaseCompletion = ([NoteModel]) -> Void
+    typealias NotesListwWithoutErrorDatabaseCompletion = ([NoteModel]) -> Void
     typealias DeleteNoteDatabaseCompletion = (Error?) -> Void
     typealias AddUpdateNoteDatabaseCompletion = (Result<NoteModel, Error>) -> Void
     
@@ -151,29 +156,51 @@ extension NoteDatabaseModule: NotesListDatabaseProtocol {
                         }
                     }
                 
-                completion(.success(arrNotes.filter{ $0.UID != userId }))
+                completion(.success(arrNotes.filter{ $0.UID != userId && $0.IsShared }))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
     
-    func deleteNotes(notes: [NoteModel], completion: @escaping NoteDatabaseModule.DeleteNotesDatabaseCompletion) {
+    func deleteNotes(notes: [NoteModel], completion: @escaping NoteDatabaseModule.NotesListwWithoutErrorDatabaseCompletion) {
         // create dispatch group
-        let dispatchNotesGroup = DispatchGroup()
+        let dispatchGroupDeletedNoted = DispatchGroup()
         var removedNotes = [NoteModel]()
         for note in notes {
-            dispatchNotesGroup.enter()
+            dispatchGroupDeletedNoted.enter()
             self.deleteNote(note) { error in
                 if error == nil {
                     removedNotes.append(note)
                 }
-                dispatchNotesGroup.leave()
+                dispatchGroupDeletedNoted.leave()
             }
         }
         
-        dispatchNotesGroup.notify(queue: DispatchQueue.main) {
+        dispatchGroupDeletedNoted.notify(queue: DispatchQueue.main) {
             completion(removedNotes)
+        }
+    }
+    
+    func sharedNotes(_ notes: [NoteModel], isShared: Bool, completion: @escaping NoteDatabaseModule.NotesListwWithoutErrorDatabaseCompletion) {
+        // create dispatch group
+        let dispatchGroupSharedNoted = DispatchGroup()
+        var updatedNotes = [NoteModel]()
+        for note in notes {
+            dispatchGroupSharedNoted.enter()
+            self.sharedNote(note, isShared: isShared) { result in
+                switch result {
+                case .success(let note):
+                    updatedNotes.append(note)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                dispatchGroupSharedNoted.leave()
+            }
+        }
+        
+        dispatchGroupSharedNoted.notify(queue: DispatchQueue.main) {
+            completion(updatedNotes)
         }
     }
 }

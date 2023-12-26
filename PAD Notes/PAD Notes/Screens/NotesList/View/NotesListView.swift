@@ -39,12 +39,13 @@ struct NotesListView : View, NotesListViewprotocol {
                         Section(header: Text(viewmodel.authUser.displayName ?? viewmodel.authUser.email)) {
                             ForEach(viewmodel.arrNotes, id:\.NoteID) { note in
                                 noteViewList(note: note)
-                            }.onDelete(perform: self.viewmodel.deleteData(at:))
+                            }
+                            .onDelete(perform: self.viewmodel.deleteData(at:))
                         }
                         
                         Section(header: Text("Shared Notes")) {
                             ForEach(viewmodel.arrSharedNotes, id:\.NoteID) { note in
-                                noteViewList(note: note)
+                                sharedNoteViewList(note: note)
                             }
                         }
                     }
@@ -72,6 +73,33 @@ struct NotesListView : View, NotesListViewprotocol {
     }
     
     private func noteViewList(note: NoteModel) -> some View {
+        NavigationLink(destination: viewmodel.navigateNoteDetail(note)) {
+            VStack(alignment: .leading) {
+                Text(note.Title).font(.system(size: 22, weight: .regular))
+                HStack {
+                    Text("Updated at \(note.UpdatedAt.formatted(date: Date.FormatStyle.DateStyle.omitted, time: Date.FormatStyle.TimeStyle.shortened))").foregroundStyle(.gray)
+                    Spacer()
+                    if note.IsShared {
+                        Image(systemName: "person.2.fill")
+                            .foregroundColor(.mint)
+                    } else {
+                        Image(systemName: "person.2.slash.fill")
+                            .foregroundColor(.indigo)
+                    }
+                }
+            }.frame(maxHeight: 200)
+        }
+        .swipeActions(edge: .leading) {
+            Button {
+                viewmodel.shareNote(note, isShared: !note.IsShared)
+            } label: {
+                Image(systemName: note.IsShared ? "person.2.slash.fill": "person.2.fill")
+            }
+            .tint(note.IsShared ? .indigo : .mint)
+        }
+    }
+    
+    private func sharedNoteViewList(note: NoteModel) -> some View {
         NavigationLink(destination: viewmodel.navigateNoteDetail(note)) {
             VStack(alignment: .leading) {
                 Text(note.Title).font(.system(size: 22, weight: .regular))
