@@ -85,6 +85,26 @@ class NoteDatabaseModuleTestSpec: QuickSpec {
                     })
                 }
             }
+            
+            context("share/ unshare notes") {
+                it("share notes") {
+                    let expectedSharedNotes = ExpectedData.QueryNotes
+                    let isShared = true
+                    dbModule?.sharedNotes(expectedSharedNotes, isShared: isShared, completion: { result in
+                        let notes = result.filter{$0.IsShared == isShared}
+                        expect(notes.count).to(equal(expectedSharedNotes.count))
+                    })
+                }
+                
+                it("unshare notes") {
+                    let expectedUnsharedNotes = ExpectedData.QueryNotes
+                    let isShared = false
+                    dbModule?.sharedNotes(expectedUnsharedNotes, isShared: isShared, completion: { result in
+                        let notes = result.filter{$0.IsShared == isShared}
+                        expect(notes.count).to(equal(expectedUnsharedNotes.count))
+                    })
+                }
+            }
         }
         
         describe("Test NoteDetailDatabaseProtocol") {
