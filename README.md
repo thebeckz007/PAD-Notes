@@ -1,9 +1,7 @@
 # PAD-Notes
 A notes application for iOS, iPadOS. This project is the showcase of MVVM architecture, following SOLID principles, using Firebase Authentication, Firebase Realtime Database and SwiftUI, SwiftCombine, etc.
 
-<img src="screenshot/SignInscreen.png.png" width="300"/>
-<img src="screenshot/Notelists.png" width="300"/>
-<img src="screenshot/Notelists_Swipedeleting.png" width="300"/>
+<img src="Screenshots/SignInscreen.png" width="300"/> <img src="Screenshots/Notelists.png" width="300"/> <img src="Screenshots/Notelists_Swipedeleting.png" width="300"/>
 
 # Features 
 - User: -> spend time: ~10hrs
@@ -60,13 +58,29 @@ A notes application for iOS, iPadOS. This project is the showcase of MVVM archit
 - Quick, Nimble framework: to write UnitTest
 - Follow SOLID principles
 
+## Environment
+- XCode 15.0 ++
+- iOS 17 ++
+
+## How to run
+To run/ compile the app, we need to install some libraries from Swift Packages Manager:
+- Firebase:
+    - Authentication
+    - Realtime Database
+ 
+To run Unit-test, we need to install some libraries from Swift Packages Manager:
+- Quick
+- Nimble
+
 # Database Schema
-Note:
-    userId:
-        NoteId:
-            Title:      // string
-            Content:    // string
-            createdAt:  // number
-            updatedAt:  // number
-            isFavorite: // bool
-            isShared:   // bool
+>
+> 
+    Note:
+        userId:
+            NoteId:
+                Title:      // string
+                Content:    // string
+                createdAt:  // number
+                updatedAt:  // number
+                isFavorite: // bool
+                isShared:   // bool
