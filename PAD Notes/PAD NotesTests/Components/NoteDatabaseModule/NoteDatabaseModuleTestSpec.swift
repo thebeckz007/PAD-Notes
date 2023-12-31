@@ -8,6 +8,7 @@
 import Quick
 import Nimble
 import Foundation
+import FIRDatabaseWrapper
 
 @testable import PAD_Notes
 
@@ -28,7 +29,7 @@ class NoteDatabaseModuleTestSpec: QuickSpec {
         var dbModule: NoteDatabaseModule?
 
         beforeEach {
-            let firDBModule = MockRealtimeDatabaseFirebaseModule()
+            let firDBModule = MockFIRDatabaseWrapper()
             dbModule = NoteDatabaseModule.sharedInstance
             dbModule?.configure(firDBRef: firDBModule)
         }
@@ -302,41 +303,42 @@ import FirebaseAuth
 import FirebaseDatabaseInternal
 
 // MARK: mock of RealtimeDatabaseFirebaseModule
-fileprivate class MockRealtimeDatabaseFirebaseModule: FIRDatabaseWrapperProtocol {
+fileprivate class MockFIRDatabaseWrapper: FIRDatabaseWrapperProtocol {
     func configure() {
         // Nothings
     }
     
-    func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCompletion) {
+    func set(_ value: Any, at child: String, parentNodes: String..., completion: @escaping (Error?) -> Void) {
         self.set(value, at: child, parentNodes: parentNodes, completion: completion)
     }
     
-    func set(_ value: Any, at child: String, parentNodes: [String], completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCompletion) {
+    func set(_ value: Any, at child: String, parentNodes: [String], completion: @escaping (Error?) -> Void) {
         completion(nil)
     }
     
-    func get(at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.DataCompletion) {
+    func get(at child: String, parentNodes: String..., completion: @escaping (Result<FIRDataResult?, Error>) -> Void) {
         self.get(at: child, parentNodes: parentNodes, completion: completion)
     }
     
-    func get(at child: String, parentNodes: [String], completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.DataCompletion) {
+    func get(at child: String, parentNodes: [String], completion: @escaping (Result<FIRDataResult?, Error>) -> Void) {
         // test case get Notes by existing UserID
         if child == ExpectedData.User.UID {
-            let data = NoteJsonHelper.converNotesListToJson(ExpectedData.QueryNotes)
-            completion(.success(data ?? ""))
+            completion(.success(FIRDataResult(notes: ExpectedData.QueryNotes)))
         } else {
             // test case get Notes by no existing UserID
-            completion(.success(""))
+            completion(.success(nil))
         }
     }
     
-    func delete(at child: String, parentNodes: String..., completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCompletion) {
+    func delete(at child: String, parentNodes: String..., completion: @escaping (Error?) -> Void) {
         self.delete(at: child, parentNodes: parentNodes, completion: completion)
     }
     
-    func delete(at child: String, parentNodes: [String], completion: @escaping PAD_Notes.RealtimeDatabaseFirebaseModule.ErrorCompletion) {
+    func delete(at child: String, parentNodes: [String], completion: @escaping (Error?) -> Void) {
         completion(nil)
     }
+    
+    
 }
 
 private struct NoteJsonHelper {
@@ -350,10 +352,22 @@ private struct NoteJsonHelper {
     }
 }
 
+extension FIRDataResult {
+    init(notes: [NoteModel]) {
+        let data = NoteJsonHelper.converNotesListToJson(ExpectedData.QueryNotes)
+        self.init(jsonString: data ?? "")
+    }
+}
+
 extension Dictionary {
     var jsonData: Data? {
         return try? JSONSerialization.data(withJSONObject: self, options: [.prettyPrinted])
     }
     
     var json: String? { jsonData?.string }
+}
+
+extension Data {
+    /// Converting data to a string
+    var string: String? { String(data: self, encoding: .utf8) }
 }
