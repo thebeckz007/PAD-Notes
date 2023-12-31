@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		702A2FA12B414C5200AB66A1 /* FIRDatabaseWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 702A2FA02B414C5200AB66A1 /* FIRDatabaseWrapper */; };
 		70A28EF22B33E2C2003474F5 /* PAD_NotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28EF12B33E2C2003474F5 /* PAD_NotesApp.swift */; };
 		70A28EF62B33E2C3003474F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A28EF52B33E2C3003474F5 /* Assets.xcassets */; };
 		70A28EF92B33E2C3003474F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A28EF82B33E2C3003474F5 /* Preview Assets.xcassets */; };
@@ -57,15 +58,10 @@
 		70A28FB02B3584B4003474F5 /* NoteDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28FAA2B3584B4003474F5 /* NoteDetailModel.swift */; };
 		70A28FB12B3584B4003474F5 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28FAC2B3584B4003474F5 /* NoteDetailView.swift */; };
 		70A28FB22B3584B4003474F5 /* NoteDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A28FAE2B3584B4003474F5 /* NoteDetailBuilder.swift */; };
-		70EEC5112B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5102B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift */; };
-		70EEC5132B36A9AC0093C411 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5122B36A9AC0093C411 /* String+Path.swift */; };
 		70EEC5152B36AED40093C411 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5142B36AED40093C411 /* NoteModel.swift */; };
 		70EEC5232B386A410093C411 /* NoteDatabaseModuleTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5222B386A410093C411 /* NoteDatabaseModuleTestSpec.swift */; };
 		70EEC5262B386AA10093C411 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 70EEC5252B386AA10093C411 /* Quick */; };
 		70EEC5282B386AA10093C411 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 70EEC5272B386AA10093C411 /* Nimble */; };
-		70EEC52A2B3893BF0093C411 /* String+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5292B3893BF0093C411 /* String+Json.swift */; };
-		70EEC52C2B3894140093C411 /* DataSnapShot+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC52B2B3894140093C411 /* DataSnapShot+Json.swift */; };
-		70EEC52F2B3894C80093C411 /* Data+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC52E2B3894C80093C411 /* Data+String.swift */; };
 		70EEC5312B3927410093C411 /* SignInModelTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5302B3927410093C411 /* SignInModelTestSpec.swift */; };
 		70EEC5332B3927580093C411 /* SignInViewModelTestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5322B3927580093C411 /* SignInViewModelTestSpec.swift */; };
 		70EEC5352B392EEC0093C411 /* AuthenticationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EEC5342B392EEC0093C411 /* AuthenticationUser.swift */; };
@@ -128,13 +124,8 @@
 		70A28FAA2B3584B4003474F5 /* NoteDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailModel.swift; sourceTree = "<group>"; };
 		70A28FAC2B3584B4003474F5 /* NoteDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		70A28FAE2B3584B4003474F5 /* NoteDetailBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailBuilder.swift; sourceTree = "<group>"; };
-		70EEC5102B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealtimeDatabaseFirebaseModule.swift; sourceTree = "<group>"; };
-		70EEC5122B36A9AC0093C411 /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		70EEC5142B36AED40093C411 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		70EEC5222B386A410093C411 /* NoteDatabaseModuleTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatabaseModuleTestSpec.swift; sourceTree = "<group>"; };
-		70EEC5292B3893BF0093C411 /* String+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Json.swift"; sourceTree = "<group>"; };
-		70EEC52B2B3894140093C411 /* DataSnapShot+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSnapShot+Json.swift"; sourceTree = "<group>"; };
-		70EEC52E2B3894C80093C411 /* Data+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+String.swift"; sourceTree = "<group>"; };
 		70EEC5302B3927410093C411 /* SignInModelTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModelTestSpec.swift; sourceTree = "<group>"; };
 		70EEC5322B3927580093C411 /* SignInViewModelTestSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModelTestSpec.swift; sourceTree = "<group>"; };
 		70EEC5342B392EEC0093C411 /* AuthenticationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUser.swift; sourceTree = "<group>"; };
@@ -163,6 +154,7 @@
 				70A28F802B346F37003474F5 /* FirebaseDatabase in Frameworks */,
 				70A28F7C2B346F37003474F5 /* FirebaseAuthCombine-Community in Frameworks */,
 				70A28F8A2B346F37003474F5 /* FirebaseFirestoreSwift in Frameworks */,
+				702A2FA12B414C5200AB66A1 /* FIRDatabaseWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +239,6 @@
 		70A28F1B2B33E320003474F5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				70EEC52D2B3894470093C411 /* RealtimeDatabaseFirebaseModule */,
 				70A28F602B345802003474F5 /* NoteDatabaseModule */,
 				70A28F4E2B345647003474F5 /* UIComponents */,
 				70A28F312B33E56B003474F5 /* Authentication */,
@@ -620,18 +611,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		70EEC52D2B3894470093C411 /* RealtimeDatabaseFirebaseModule */ = {
-			isa = PBXGroup;
-			children = (
-				70EEC5102B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift */,
-				70EEC5122B36A9AC0093C411 /* String+Path.swift */,
-				70EEC5292B3893BF0093C411 /* String+Json.swift */,
-				70EEC52B2B3894140093C411 /* DataSnapShot+Json.swift */,
-				70EEC52E2B3894C80093C411 /* Data+String.swift */,
-			);
-			path = RealtimeDatabaseFirebaseModule;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -665,6 +644,7 @@
 				70A28F8D2B346F37003474F5 /* FirebaseFunctionsCombine-Community */,
 				70A28F8F2B346F37003474F5 /* FirebaseStorage */,
 				70A28F912B346F37003474F5 /* FirebaseStorageCombine-Community */,
+				702A2FA02B414C5200AB66A1 /* FIRDatabaseWrapper */,
 			);
 			productName = "PAD Notes";
 			productReference = 70A28EEE2B33E2C2003474F5 /* PAD Notes.app */;
@@ -746,6 +726,7 @@
 				70A28F722B346F37003474F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				70EEC5162B3869310093C411 /* XCRemoteSwiftPackageReference "Quick" */,
 				70EEC5192B3869530093C411 /* XCRemoteSwiftPackageReference "Nimble" */,
+				702A2F9F2B414C5200AB66A1 /* XCRemoteSwiftPackageReference "FIRDatabaseWrapper" */,
 			);
 			productRefGroup = 70A28EEF2B33E2C2003474F5 /* Products */;
 			projectDirPath = "";
@@ -791,11 +772,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A28F372B33F641003474F5 /* SignInView.swift in Sources */,
-				70EEC52A2B3893BF0093C411 /* String+Json.swift in Sources */,
 				70A28F4A2B343EF3003474F5 /* SignUpBuilder.swift in Sources */,
 				70A28F6E2B34688D003474F5 /* HomePageViewModel.swift in Sources */,
 				70A28F382B33F641003474F5 /* SignInViewModel.swift in Sources */,
-				70EEC5112B3695630093C411 /* RealtimeDatabaseFirebaseModule.swift in Sources */,
 				70A28F6F2B34688D003474F5 /* HomePageModel.swift in Sources */,
 				70A28F482B343EF3003474F5 /* SignUpViewModel.swift in Sources */,
 				70A28F502B345647003474F5 /* SwiftUIView+Helpers.swift in Sources */,
@@ -812,7 +791,6 @@
 				70A28F302B33E48F003474F5 /* MVVMBaseProtocol.swift in Sources */,
 				70A28F4B2B343EF3003474F5 /* SignUpModel.swift in Sources */,
 				70A28F702B34688D003474F5 /* HomePageView.swift in Sources */,
-				70EEC52F2B3894C80093C411 /* Data+String.swift in Sources */,
 				70A28F5C2B34579C003474F5 /* NotesListViewModel.swift in Sources */,
 				70A28FA32B3531DA003474F5 /* UserProfileBuilder.swift in Sources */,
 				70A28F492B343EF3003474F5 /* SignUpView.swift in Sources */,
@@ -824,8 +802,6 @@
 				70A28F342B33F63B003474F5 /* AuthenticationModule.swift in Sources */,
 				70A28FB02B3584B4003474F5 /* NoteDetailModel.swift in Sources */,
 				70A28FB12B3584B4003474F5 /* NoteDetailView.swift in Sources */,
-				70EEC5132B36A9AC0093C411 /* String+Path.swift in Sources */,
-				70EEC52C2B3894140093C411 /* DataSnapShot+Json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,6 +1141,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		702A2F9F2B414C5200AB66A1 /* XCRemoteSwiftPackageReference "FIRDatabaseWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thebeckz007/FIRDatabaseWrapper.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		70A28F722B346F37003474F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1192,6 +1176,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		702A2FA02B414C5200AB66A1 /* FIRDatabaseWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 702A2F9F2B414C5200AB66A1 /* XCRemoteSwiftPackageReference "FIRDatabaseWrapper" */;
+			productName = FIRDatabaseWrapper;
+		};
 		70A28F732B346F37003474F5 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 70A28F722B346F37003474F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

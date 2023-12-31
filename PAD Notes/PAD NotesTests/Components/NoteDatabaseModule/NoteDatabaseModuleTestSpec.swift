@@ -302,7 +302,7 @@ import FirebaseAuth
 import FirebaseDatabaseInternal
 
 // MARK: mock of RealtimeDatabaseFirebaseModule
-fileprivate class MockRealtimeDatabaseFirebaseModule: RealtimeDatabaseFirebaseModuleProtocol {
+fileprivate class MockRealtimeDatabaseFirebaseModule: FIRDatabaseWrapperProtocol {
     func configure() {
         // Nothings
     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FIRDatabaseWrapper
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -14,7 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         AuthenticationModule.sharedInstance.Configure()
         
         // setup Database Module
-        NoteDatabaseModule.sharedInstance.configure(firDBRef: RealtimeDatabaseFirebaseModule.sharedInstance)
+        NoteDatabaseModule.sharedInstance.configure(firDBRef: FIRDatabaseWrapper.sharedInstance)
         
         return true
     }

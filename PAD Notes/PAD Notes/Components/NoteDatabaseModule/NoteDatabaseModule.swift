@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import FIRDatabaseWrapper
 
 // MARK: protocol NoteDatabaseModuleProtocol
 /// protocol NoteDatabaseModuleProtocol
 protocol NoteDatabaseModuleProtocol {
     /// Configure/ setup something
-    func configure(firDBRef: RealtimeDatabaseFirebaseModuleProtocol)
+    func configure(firDBRef: FIRDatabaseWrapperProtocol)
 }
 
 // MARK: protocol NotesListDatabaseProtocol
@@ -83,11 +84,11 @@ class NoteDatabaseModule: NoteDatabaseModuleProtocol {
     
     /// a shared instance of NoteDatabaseModule as singleton instance
     static let sharedInstance = NoteDatabaseModule()
-    private var firDBRef: RealtimeDatabaseFirebaseModuleProtocol!
+    private var firDBRef: FIRDatabaseWrapperProtocol!
     
     private let rootChild = "note"
 
-    func configure(firDBRef: RealtimeDatabaseFirebaseModuleProtocol) {
+    func configure(firDBRef: FIRDatabaseWrapperProtocol) {
         self.firDBRef = firDBRef
         self.firDBRef.configure()
     }
@@ -111,9 +112,9 @@ extension NoteDatabaseModule: NotesListDatabaseProtocol {
                     }
                  }
                  */
-            case .success(let jsonData):
+            case .success(let data):
                 var arrNotes = [NoteModel]()
-                if let data = jsonData?.convertToDictionary() {
+                if let data = data?.toDictionary() {
                     for noteID in data.keys {
                         arrNotes.append(NoteModel(userID: userId, noteID: noteID, dictValue: data[noteID] as! [String : Any]))
                     }
@@ -143,10 +144,10 @@ extension NoteDatabaseModule: NotesListDatabaseProtocol {
                     }
                  }
                  */
-            case .success(let jsonData):
+            case .success(let data):
                 var arrNotes = [NoteModel]()
                 
-                if let dataRoot = jsonData?.convertToDictionary() {
+                if let dataRoot = data?.toDictionary() {
                     for uID in dataRoot.keys {
                         if let dataByUser = dataRoot[uID] as? [String: Any] {
                                 for noteID in dataByUser.keys {
