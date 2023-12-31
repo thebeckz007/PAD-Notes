@@ -69,6 +69,7 @@ To run/ compile the app, we need to install some libraries from Swift Packages M
 - Firebase:
     - Authentication
     - Realtime Database
+- FIRDatabaseWrapper [Github page](https://github.com/thebeckz007/FIRDatabaseWrapper.git)
  
 To run Unit-test, we need to install some libraries from Swift Packages Manager:
 - Quick
